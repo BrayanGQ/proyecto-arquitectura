@@ -343,3 +343,56 @@ class ConexionDB:
                 conn.rollback()
                 conn.close()
             return False
+            
+    def obtener_ultimo_id(self):
+        """Obtiene el ID del último evento insertado en la base de datos."""
+        try:
+            cur, conn = self._ejecutar_consulta("""
+                SELECT id FROM eventos 
+                ORDER BY fecha_hora DESC 
+                LIMIT 1
+            """)
+            
+            if not cur or not conn:
+                return None
+            
+            resultado = cur.fetchone()
+            ultimo_id = resultado[0] if resultado else None
+            
+            cur.close()
+            conn.close()
+            return ultimo_id
+        except Exception as e:
+            print(f"Error al obtener último ID: {e}")
+            return None
+            
+    def obtener_evento_por_id(self, evento_id):
+        """Obtiene un evento específico por su ID."""
+        try:
+            cur, conn = self._ejecutar_consulta("""
+                SELECT fecha_hora, ubicacion, tipo_evento, descripcion
+                FROM eventos
+                WHERE id = %s
+            """, (evento_id,))
+            
+            if not cur or not conn:
+                return None
+            
+            resultado = cur.fetchone()
+            
+            # Sanitizar resultado si existe
+            if resultado:
+                fecha_hora, ubicacion, tipo_evento, descripcion = resultado
+                
+                ubicacion = self._sanitizar_texto(ubicacion)
+                tipo_evento = self._sanitizar_texto(tipo_evento)
+                descripcion = self._sanitizar_texto(descripcion)
+                
+                resultado = (fecha_hora, ubicacion, tipo_evento, descripcion)
+            
+            cur.close()
+            conn.close()
+            return resultado
+        except Exception as e:
+            print(f"Error al consultar evento por ID: {e}")
+            return None

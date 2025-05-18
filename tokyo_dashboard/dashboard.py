@@ -463,78 +463,209 @@ class Dashboard:
     def reproducir_sonido(self):
         """Reproduce un sonido de alerta."""
         try:
-            # Buscar el archivo de sonido en varias ubicaciones posibles
-            sonido_encontrado = False
-            posibles_rutas = [
+            print("Intentando reproducir sonido de alerta...")
+            # Inicializar pygame.mixer si no se ha hecho ya
+            if not pygame.mixer.get_init():
+                pygame.mixer.init()
+                print("Pygame mixer inicializado en reproducir_sonido")
+                
+            # Rutas de sonido a probar en orden
+            rutas_a_probar = [
+                # Ruta específica proporcionada
+                r"C:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\recursos\sonido\random-alarm-319318.mp3",
+                # Otras rutas posibles
                 "alerta.mp3",
                 "recursos/sonido/alerta.mp3",
-                "recursos/alerta.mp3",
+                "recursos/sonido/random-alarm-319318.mp3",
                 os.path.join(os.path.dirname(os.path.abspath(__file__)), "alerta.mp3"),
                 os.path.join(os.path.dirname(os.path.abspath(__file__)), "recursos/sonido/alerta.mp3"),
-                r"C:\Users\braya\Documents\Arquitectura de Computadoras\Programa\recursos\sonido\alerta.mp3"
+                # Rutas absolutas de respaldo
+                r"C:\Windows\Media\Alarm01.wav",  # Sonido estándar de Windows
+                r"C:\Windows\Media\Windows Exclamation.wav"
             ]
             
-            for ruta in posibles_rutas:
+            # Intentar cada ruta hasta encontrar una que funcione
+            for ruta in rutas_a_probar:
+                print(f"Probando sonido en: {ruta}")
                 if os.path.exists(ruta):
-                    pygame.mixer.music.load(ruta)
-                    sonido_encontrado = True
-                    logging.info(f"Archivo de sonido encontrado en: {ruta}")
-                    break
+                    print(f"¡Archivo encontrado! Cargando: {ruta}")
+                    try:
+                        pygame.mixer.music.load(ruta)
+                        pygame.mixer.music.set_volume(1.0)  # Volumen máximo
+                        pygame.mixer.music.play()
+                        print(f"¡Sonido reproduciendo desde {ruta}!")
+                        logging.info(f"Reproduciendo sonido de alarma desde: {ruta}")
+                        return True
+                    except Exception as e:
+                        print(f"Error al cargar/reproducir {ruta}: {e}")
+                        logging.error(f"Error al cargar/reproducir {ruta}: {e}")
+                        continue  # Probar con la siguiente ruta
             
-            if not sonido_encontrado:
-                mensaje = "No se encontró el archivo de sonido de alerta."
-                logging.warning(mensaje)
-                print(mensaje)
+            # Si llegamos aquí, no se encontró ningún archivo de sonido o hubo errores
+            print("No se pudo reproducir ningún sonido de alarma, intentando beep...")
+            logging.warning("No se pudo reproducir ningún sonido de alarma")
+            
+            # Intentar usar beep del sistema como último recurso
+            try:
+                import winsound
+                for _ in range(3):  # Emitir 3 beeps para mayor llamada de atención
+                    winsound.Beep(800, 300)  # Frecuencia más baja, duración más corta
+                    time.sleep(0.2)
+                    winsound.Beep(1000, 500)  # Frecuencia más alta, duración más larga
+                    time.sleep(0.2)
+                logging.info("Se usó beep del sistema como alternativa")
+                print("Beep del sistema reproducido con éxito")
+                return True
+            except Exception as e:
+                print(f"Error en beep: {e}")
+                logging.error(f"No se pudo usar beep del sistema: {e}")
+            return False
                 
-                # Intentar usar beep del sistema como alternativa
-                try:
-                    import winsound
-                    winsound.Beep(1000, 1000)  # 1000 Hz durante 1 segundo
-                    logging.info("Se usó beep del sistema como alternativa")
-                except Exception as e:
-                    logging.error(f"No se pudo usar beep del sistema: {e}")
-                return
-            
-            pygame.mixer.music.set_volume(1.0)  # 1.0 = volumen máximo
-            pygame.mixer.music.play()
-            time.sleep(3)  # Reducido a 3 segundos para no bloquear por mucho tiempo
-            pygame.mixer.music.stop()
-            logging.info("Sonido de alerta reproducido correctamente")
-            
         except Exception as e:
             mensaje_error = f"Error al reproducir sonido: {e}"
             logging.error(mensaje_error)
             print(mensaje_error)
-            
-            # Intentar usar beep del sistema si falla pygame
-            try:
-                import winsound
-                winsound.Beep(1000, 1000)  # 1000 Hz durante 1 segundo
-                logging.info("Se usó beep del sistema como alternativa")
-            except Exception as e2:
-                logging.error(f"No se pudo usar beep del sistema: {e2}")
+            return False
     
     def alerta_emergencia(self, tipo_evento, descripcion):
-        """Muestra un diálogo de alerta y reproduce un sonido en hilos separados."""
+        """Muestra un diálogo de alerta animado y reproduce un sonido de emergencia."""
+        print(f"ALERTA DETECTADA: {tipo_evento} - {descripcion}")
         logging.info(f"Alerta de emergencia: {tipo_evento} - {descripcion}")
         
-        # Mostrar el mensaje en un hilo aparte para no bloquear
-        def mostrar_dialogo():
-            try:
-                messagebox.showwarning("⚠ ALERTA DE EMERGENCIA", 
-                                     f"Se ha detectado: {tipo_evento}\n\n{descripcion}")
-            except Exception as e:
-                logging.error(f"Error al mostrar diálogo de alerta: {e}")
-
-        # Reproducir sonido en otro hilo
+        # Reproducir sonido en un hilo separado
         def reproducir_en_hilo():
             try:
-                self.reproducir_sonido()
+                exito = self.reproducir_sonido()
+                # Si el sonido se reprodujo correctamente, detenerlo después de 9 segundos
+                if exito:
+                    print("Sonido reproducido, durará 9 segundos")
+                    time.sleep(9)  # Reproduce el sonido por 9 segundos
+                    pygame.mixer.music.stop()
+                    print("Sonido detenido después de 9 segundos")
             except Exception as e:
+                print(f"Error en hilo de reproducción de sonido: {e}")
                 logging.error(f"Error en hilo de reproducción de sonido: {e}")
-
-        # Iniciar hilos como daemon para que terminen cuando se cierre la aplicación
-        threading.Thread(target=mostrar_dialogo, daemon=True).start()
+        
+        # Crear una ventana de alerta personalizada con animación
+        def mostrar_alerta_animada():
+            try:
+                print("Creando ventana de alerta emergente...")
+                # Crear una ventana flotante para la alerta
+                alerta_window = tk.Toplevel(self.root)
+                alerta_window.title("¡¡ALERTA DE EMERGENCIA!!")
+                
+                # Asegurar que la ventana tiene el foco
+                alerta_window.focus_force()
+                alerta_window.grab_set()  # Hacer modal
+                
+                # Configurar geometría de la ventana
+                ancho_ventana = 500
+                alto_ventana = 300
+                
+                # Centrar la ventana en la pantalla
+                pos_x = alerta_window.winfo_screenwidth() // 2 - ancho_ventana // 2
+                pos_y = alerta_window.winfo_screenheight() // 2 - alto_ventana // 2
+                alerta_window.geometry(f"{ancho_ventana}x{alto_ventana}+{pos_x}+{pos_y}")
+                
+                # Configurar el fondo en color de alerta
+                alerta_window.configure(bg="#ff0000")  # Rojo más intenso
+                
+                # Hacer que la ventana siempre esté encima
+                alerta_window.attributes("-topmost", True)
+                
+                # Icono de advertencia
+                icono_frame = tk.Frame(alerta_window, bg="#ff0000")
+                icono_frame.pack(pady=10)
+                
+                # Se puede usar un emoji como alternativa a una imagen
+                icono_label = tk.Label(icono_frame, text="⚠️", font=("Arial", 48), bg="#ff0000", fg="black")
+                icono_label.pack()
+                
+                # Marco para el texto de la alerta
+                texto_frame = tk.Frame(alerta_window, bg="#ff0000")
+                texto_frame.pack(expand=True, fill=tk.BOTH, padx=20)
+                
+                # Título de la alerta
+                titulo_label = tk.Label(texto_frame, 
+                                       text=f"¡ALERTA: {tipo_evento.upper()}!", 
+                                       font=("Arial", 24, "bold"),
+                                       fg="white", bg="#ff0000")
+                titulo_label.pack(pady=10)
+                
+                # Descripción de la alerta
+                desc_label = tk.Label(texto_frame, 
+                                     text=descripcion, 
+                                     font=("Arial", 14),
+                                     fg="white", bg="#ff0000",
+                                     wraplength=450)  # Ajustar el texto si es muy largo
+                desc_label.pack(pady=10)
+                
+                # Instrucciones
+                instruccion_label = tk.Label(texto_frame,
+                                           text="Se recomienda seguir los protocolos de seguridad establecidos.",
+                                           font=("Arial", 12, "italic"),
+                                           fg="white", bg="#ff0000",
+                                           wraplength=450)
+                instruccion_label.pack(pady=10)
+                
+                # Variable para cambiar entre colores
+                es_rojo = [False]  # Usar lista para que pueda ser modificada en la función interna
+                
+                # Función para cambiar el color del texto intermitentemente
+                def cambiar_color():
+                    if alerta_window.winfo_exists():  # Verificar que la ventana siga existiendo
+                        if es_rojo[0]:
+                            titulo_label.config(fg="white")
+                            es_rojo[0] = False
+                        else:
+                            titulo_label.config(fg="yellow")
+                            es_rojo[0] = True
+                        
+                        # Programar el próximo cambio de color (cada 500ms)
+                        alerta_window.after(500, cambiar_color)
+                
+                # Iniciar la animación de cambio de color
+                cambiar_color()
+                
+                # Función para hacer "parpadear" la ventana
+                def flash_window():
+                    if alerta_window.winfo_exists():  # Verificar que la ventana siga existiendo
+                        # Alternar entre dos colores de fondo
+                        current_bg = alerta_window.cget("bg")
+                        if current_bg == "#ff0000":  # Si es rojo
+                            alerta_window.configure(bg="#ff8080")  # Cambiar a un rojo más claro
+                            icono_frame.configure(bg="#ff8080")
+                            texto_frame.configure(bg="#ff8080")
+                            icono_label.configure(bg="#ff8080")
+                        else:
+                            alerta_window.configure(bg="#ff0000")  # Cambiar a rojo
+                            icono_frame.configure(bg="#ff0000")
+                            texto_frame.configure(bg="#ff0000")
+                            icono_label.configure(bg="#ff0000")
+                        
+                        # Programar el próximo cambio (cada 750ms)
+                        alerta_window.after(750, flash_window)
+                
+                # Iniciar el parpadeo de la ventana
+                flash_window()
+                
+                # Cerrar automáticamente la ventana después de 9 segundos
+                alerta_window.after(9000, alerta_window.destroy)
+                
+                print("Ventana de alerta creada exitosamente")
+                
+            except Exception as e:
+                print(f"Error al mostrar alerta animada: {e}")
+                logging.error(f"Error al mostrar alerta animada: {e}")
+                # Mostrar messagebox tradicional como respaldo
+                messagebox.showwarning("⚠ ALERTA DE EMERGENCIA", 
+                                      f"Se ha detectado: {tipo_evento}\n\n{descripcion}")
+        
+        # Ejecutar estas funciones directamente, sin usar hilos
+        # Los hilos pueden estar causando problemas
+        mostrar_alerta_animada()
+        
+        # Iniciar el sonido en un hilo separado
         threading.Thread(target=reproducir_en_hilo, daemon=True).start()
 
     def reconectar_bd(self):
