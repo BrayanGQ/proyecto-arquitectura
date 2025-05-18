@@ -1,0 +1,140 @@
+/* Estilos generales del dashboard */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Encabezados y títulos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+/* Panel de información */
+.temperatura-panel, .alerta-panel {
+    padding: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.temperatura-panel {
+    background-color: rgba(41, 128, 185, 0.1);
+}
+
+.alerta-panel {
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+/* Estilos para alertas */
+.alerta-activa {
+    background-color: rgba(231, 76, 60, 0.2);
+    animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+    0% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+    }
+}
+
+/* Estilos de las tarjetas */
+.card {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-radius: 10px 10px 0 0 !important;
+    font-weight: bold;
+}
+
+/* Personalización de la tabla */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    color: #495057;
+    border-top: none;
+    font-weight: 600;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Destacar tipos de eventos */
+.evento-temperatura {
+    background-color: rgba(52, 152, 219, 0.1) !important;
+}
+
+.evento-alerta-sismica {
+    background-color: rgba(241, 196, 15, 0.2) !important;
+}
+
+.evento-incendio {
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+.evento-trafico {
+    background-color: rgba(155, 89, 182, 0.1) !important;
+}
+
+/* Animación para el botón de refrescar cuando está actualizando */
+.btn-refresh-animado {
+    animation: girar 1s linear infinite;
+}
+
+@keyframes girar {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 0.75rem;
+    }
+    
+    .temperatura-panel, .alerta-panel {
+        margin-bottom: 10px;
+    }
+}
+
+/* Efecto de parpadeo para el modal de alerta */
+#alertaModal .modal-content {
+    animation: parpadeo 1s infinite;
+}
+
+@keyframes parpadeo {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+#alerta-modal-tipo {
+    animation: colorChange 1s infinite alternate;
+}
+
+@keyframes colorChange {
+    from { color: #dc3545; }
+    to { color: #000000; }
+}

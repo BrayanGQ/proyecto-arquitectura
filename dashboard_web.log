@@ -1,0 +1,752 @@
+2025-05-17 22:45:44,118 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 22:45:44,118 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 22:45:44,125 - INFO -  * Restarting with stat
+2025-05-17 22:45:44,912 - WARNING -  * Debugger is active!
+2025-05-17 22:45:44,923 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 22:46:45,337 - INFO - 127.0.0.1 - - [17/May/2025 22:46:45] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:46:45,559 - INFO - 127.0.0.1 - - [17/May/2025 22:46:45] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-17 22:46:45,572 - INFO - 127.0.0.1 - - [17/May/2025 22:46:45] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-17 22:46:45,671 - INFO - 127.0.0.1 - - [17/May/2025 22:46:45] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=JNYJpds1IWELxJL1vafN HTTP/1.1" 200 -
+2025-05-17 22:46:45,717 - INFO - 127.0.0.1 - - [17/May/2025 22:46:45] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-17 22:46:53,892 - INFO - 192.168.0.6 - - [17/May/2025 22:46:53] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:46:53,912 - INFO - 192.168.0.6 - - [17/May/2025 22:46:53] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-17 22:46:53,913 - INFO - 192.168.0.6 - - [17/May/2025 22:46:53] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-17 22:46:54,013 - INFO - 192.168.0.6 - - [17/May/2025 22:46:54] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-17 22:49:10,120 - INFO - 127.0.0.1 - - [17/May/2025 22:49:10] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:49:10,146 - INFO - 127.0.0.1 - - [17/May/2025 22:49:10] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-17 22:49:10,151 - INFO - 127.0.0.1 - - [17/May/2025 22:49:10] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-17 22:49:10,234 - INFO - 127.0.0.1 - - [17/May/2025 22:49:10] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png&s=JNYJpds1IWELxJL1vafN HTTP/1.1[0m" 304 -
+2025-05-17 22:49:16,969 - INFO -  * To enable the debugger you need to enter the security pin:
+2025-05-17 22:49:16,969 - INFO -  * Debugger pin code: 166-649-557
+2025-05-17 22:49:16,970 - INFO - 127.0.0.1 - - [17/May/2025 22:49:16] "GET /?__debugger__=yes&cmd=printpin&s=JNYJpds1IWELxJL1vafN HTTP/1.1" 200 -
+2025-05-17 22:49:21,790 - INFO - 127.0.0.1 - - [17/May/2025 22:49:21] "GET /?__debugger__=yes&cmd=pinauth&pin=&s=JNYJpds1IWELxJL1vafN HTTP/1.1" 200 -
+2025-05-17 22:49:55,582 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 22:49:55,583 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 22:49:55,585 - INFO -  * Restarting with stat
+2025-05-17 22:49:56,303 - WARNING -  * Debugger is active!
+2025-05-17 22:49:56,308 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 22:50:11,233 - INFO - 127.0.0.1 - - [17/May/2025 22:50:11] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:50:11,481 - INFO - 127.0.0.1 - - [17/May/2025 22:50:11] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-17 22:50:11,490 - INFO - 127.0.0.1 - - [17/May/2025 22:50:11] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-17 22:50:11,555 - INFO - 127.0.0.1 - - [17/May/2025 22:50:11] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=So1DY3pZcDC6424mdEBO HTTP/1.1" 200 -
+2025-05-17 22:50:25,436 - INFO - 192.168.0.6 - - [17/May/2025 22:50:25] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:50:25,470 - INFO - 192.168.0.6 - - [17/May/2025 22:50:25] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-17 22:50:25,473 - INFO - 192.168.0.6 - - [17/May/2025 22:50:25] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-17 22:51:52,420 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 22:51:52,420 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 22:51:52,423 - INFO -  * Restarting with stat
+2025-05-17 22:51:53,130 - WARNING -  * Debugger is active!
+2025-05-17 22:51:53,136 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 22:51:59,017 - INFO - 127.0.0.1 - - [17/May/2025 22:51:59] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:51:59,246 - INFO - 127.0.0.1 - - [17/May/2025 22:51:59] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-17 22:51:59,256 - INFO - 127.0.0.1 - - [17/May/2025 22:51:59] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-17 22:51:59,317 - INFO - 127.0.0.1 - - [17/May/2025 22:51:59] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=cBlOGnnQWjZ6h8WBqryG HTTP/1.1" 200 -
+2025-05-17 22:54:23,966 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 22:54:23,966 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 22:54:23,970 - INFO -  * Restarting with stat
+2025-05-17 22:54:24,692 - WARNING -  * Debugger is active!
+2025-05-17 22:54:24,701 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 22:54:30,895 - INFO - 127.0.0.1 - - [17/May/2025 22:54:30] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-17 22:54:31,113 - INFO - 127.0.0.1 - - [17/May/2025 22:54:31] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-17 22:54:31,127 - INFO - 127.0.0.1 - - [17/May/2025 22:54:31] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-17 22:54:31,206 - INFO - 127.0.0.1 - - [17/May/2025 22:54:31] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=GTldCaAUWGsiwSt1P6Qd HTTP/1.1" 200 -
+2025-05-17 22:55:21,474 - INFO -  * To enable the debugger you need to enter the security pin:
+2025-05-17 22:55:21,475 - INFO -  * Debugger pin code: 166-649-557
+2025-05-17 22:55:21,475 - INFO - 127.0.0.1 - - [17/May/2025 22:55:21] "GET /?__debugger__=yes&cmd=printpin&s=GTldCaAUWGsiwSt1P6Qd HTTP/1.1" 200 -
+2025-05-17 22:55:30,416 - INFO - 127.0.0.1 - - [17/May/2025 22:55:30] "GET /?__debugger__=yes&cmd=pinauth&pin=166-649-557&s=GTldCaAUWGsiwSt1P6Qd HTTP/1.1" 200 -
+2025-05-17 22:58:23,862 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 22:58:23,862 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 22:58:23,864 - INFO -  * Restarting with stat
+2025-05-17 22:58:24,660 - WARNING -  * Debugger is active!
+2025-05-17 22:58:24,668 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 22:58:46,877 - INFO - 127.0.0.1 - - [17/May/2025 22:58:46] "GET / HTTP/1.1" 200 -
+2025-05-17 22:58:46,912 - INFO - 127.0.0.1 - - [17/May/2025 22:58:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-17 22:59:00,490 - INFO - 127.0.0.1 - - [17/May/2025 22:59:00] "GET / HTTP/1.1" 200 -
+2025-05-17 22:59:03,405 - INFO - 192.168.0.6 - - [17/May/2025 22:59:03] "GET / HTTP/1.1" 200 -
+2025-05-17 22:59:03,446 - INFO - 192.168.0.6 - - [17/May/2025 22:59:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-17 23:00:40,945 - INFO - 127.0.0.1 - - [17/May/2025 23:00:40] "GET / HTTP/1.1" 200 -
+2025-05-17 23:01:51,273 - INFO - 127.0.0.1 - - [17/May/2025 23:01:51] "GET / HTTP/1.1" 200 -
+2025-05-17 23:02:02,742 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:02:02,742 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:02:02,747 - INFO -  * Restarting with stat
+2025-05-17 23:02:03,483 - WARNING -  * Debugger is active!
+2025-05-17 23:02:03,490 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:02:11,906 - INFO - 127.0.0.1 - - [17/May/2025 23:02:11] "GET / HTTP/1.1" 200 -
+2025-05-17 23:02:37,391 - INFO - 127.0.0.1 - - [17/May/2025 23:02:37] "GET / HTTP/1.1" 200 -
+2025-05-17 23:04:42,027 - INFO - 127.0.0.1 - - [17/May/2025 23:04:42] "GET / HTTP/1.1" 200 -
+2025-05-17 23:04:49,507 - INFO - 127.0.0.1 - - [17/May/2025 23:04:49] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:05:37,623 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:05:37,623 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:05:37,626 - INFO -  * Restarting with stat
+2025-05-17 23:05:38,340 - WARNING -  * Debugger is active!
+2025-05-17 23:05:38,347 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:05:43,681 - INFO - 127.0.0.1 - - [17/May/2025 23:05:43] "GET / HTTP/1.1" 200 -
+2025-05-17 23:05:51,234 - INFO - 127.0.0.1 - - [17/May/2025 23:05:51] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:19,942 - INFO - 127.0.0.1 - - [17/May/2025 23:10:19] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:19,977 - INFO - 127.0.0.1 - - [17/May/2025 23:10:19] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:21,868 - INFO - 127.0.0.1 - - [17/May/2025 23:10:21] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:21,907 - INFO - 127.0.0.1 - - [17/May/2025 23:10:21] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:34,864 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:10:34,865 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:10:34,869 - INFO -  * Restarting with stat
+2025-05-17 23:10:35,911 - WARNING -  * Debugger is active!
+2025-05-17 23:10:35,920 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:10:38,621 - INFO - 127.0.0.1 - - [17/May/2025 23:10:38] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:38,655 - INFO - 127.0.0.1 - - [17/May/2025 23:10:38] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:39,905 - INFO - 127.0.0.1 - - [17/May/2025 23:10:39] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:39,936 - INFO - 127.0.0.1 - - [17/May/2025 23:10:39] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:40,072 - INFO - 127.0.0.1 - - [17/May/2025 23:10:40] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:40,101 - INFO - 127.0.0.1 - - [17/May/2025 23:10:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:40,219 - INFO - 127.0.0.1 - - [17/May/2025 23:10:40] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:40,244 - INFO - 127.0.0.1 - - [17/May/2025 23:10:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:40,441 - INFO - 127.0.0.1 - - [17/May/2025 23:10:40] "GET / HTTP/1.1" 200 -
+2025-05-17 23:10:40,469 - INFO - 127.0.0.1 - - [17/May/2025 23:10:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-17 23:10:59,173 - INFO - 127.0.0.1 - - [17/May/2025 23:10:59] "GET / HTTP/1.1" 200 -
+2025-05-17 23:11:23,139 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:11:23,139 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:11:23,143 - INFO -  * Restarting with stat
+2025-05-17 23:11:24,119 - WARNING -  * Debugger is active!
+2025-05-17 23:11:24,127 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:14:09,143 - INFO - Iniciando aplicación Flask
+2025-05-17 23:14:09,240 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:14:09,240 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:14:09,244 - INFO -  * Restarting with stat
+2025-05-17 23:14:10,219 - INFO - Iniciando aplicación Flask
+2025-05-17 23:14:10,277 - WARNING -  * Debugger is active!
+2025-05-17 23:14:10,284 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:14:16,032 - INFO - Acceso a la ruta principal
+2025-05-17 23:14:16,039 - INFO - 127.0.0.1 - - [17/May/2025 23:14:16] "GET / HTTP/1.1" 200 -
+2025-05-17 23:14:35,948 - INFO - 127.0.0.1 - - [17/May/2025 23:14:35] "GET /test HTTP/1.1" 200 -
+2025-05-17 23:14:42,904 - INFO - 127.0.0.1 - - [17/May/2025 23:14:42] "GET /info HTTP/1.1" 200 -
+2025-05-17 23:15:00,318 - INFO - Acceso a la ruta principal
+2025-05-17 23:15:00,320 - INFO - 127.0.0.1 - - [17/May/2025 23:15:00] "GET / HTTP/1.1" 200 -
+2025-05-17 23:15:56,101 - INFO -  * Detected change in 'c:\\Users\\braya\\Desktop\\proyecto arquitectura dashboard\\proyecto arquitectura\\tokyo_dashboard\\dashboard.py', reloading
+2025-05-17 23:15:56,170 - INFO -  * Restarting with stat
+2025-05-17 23:15:57,224 - WARNING -  * Debugger is active!
+2025-05-17 23:15:57,233 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:16:03,951 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:16:03,951 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:16:03,956 - INFO -  * Restarting with stat
+2025-05-17 23:16:05,118 - WARNING -  * Debugger is active!
+2025-05-17 23:16:05,128 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:16:12,174 - INFO - 127.0.0.1 - - [17/May/2025 23:16:12] "GET / HTTP/1.1" 200 -
+2025-05-17 23:16:12,219 - INFO - 127.0.0.1 - - [17/May/2025 23:16:12] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2025-05-17 23:16:12,224 - INFO - 127.0.0.1 - - [17/May/2025 23:16:12] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:16:12,229 - INFO - 127.0.0.1 - - [17/May/2025 23:16:12] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:27:34,304 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:27:34,344 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:27:34,344 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:27:34,346 - INFO -  * Restarting with stat
+2025-05-17 23:27:34,818 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:27:34,845 - WARNING -  * Debugger is active!
+2025-05-17 23:27:34,848 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:27:42,591 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "GET / HTTP/1.1" 200 -
+2025-05-17 23:27:42,605 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2025-05-17 23:27:42,611 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:27:42,614 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:27:42,699 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:27:42,703 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:27:42,710 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:27:42,713 - INFO - 127.0.0.1 - - [17/May/2025 23:27:42] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,867 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "GET / HTTP/1.1" 200 -
+2025-05-17 23:27:45,878 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,883 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,885 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,900 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,901 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,909 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:27:45,911 - INFO - 127.0.0.1 - - [17/May/2025 23:27:45] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,158 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "GET / HTTP/1.1" 200 -
+2025-05-17 23:28:12,173 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,177 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,181 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,344 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,346 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,355 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/js/dashboard.js HTTP/1.1[0m" 404 -
+2025-05-17 23:28:12,356 - INFO - 127.0.0.1 - - [17/May/2025 23:28:12] "[33mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 404 -
+2025-05-17 23:36:58,706 - INFO -  * Detected change in 'c:\\Users\\braya\\Desktop\\proyecto arquitectura dashboard\\proyecto arquitectura\\tokyo_dashboard\\dashboard.py', reloading
+2025-05-17 23:36:58,742 - INFO -  * Restarting with stat
+2025-05-17 23:36:59,221 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:36:59,227 - INFO - Carpeta creada: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static/css
+2025-05-17 23:36:59,227 - INFO - Carpeta creada: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static/js
+2025-05-17 23:36:59,227 - INFO - Carpeta creada: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static/sound
+2025-05-17 23:36:59,230 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:36:59,257 - WARNING -  * Debugger is active!
+2025-05-17 23:36:59,260 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:37:59,469 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:37:59,477 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:37:59,520 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:37:59,520 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:37:59,521 - INFO -  * Restarting with stat
+2025-05-17 23:38:00,035 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:38:00,044 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:38:00,074 - WARNING -  * Debugger is active!
+2025-05-17 23:38:00,077 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:38:11,777 - INFO - 127.0.0.1 - - [17/May/2025 23:38:11] "GET / HTTP/1.1" 200 -
+2025-05-17 23:38:11,793 - INFO - 127.0.0.1 - - [17/May/2025 23:38:11] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2025-05-17 23:38:11,929 - INFO - 127.0.0.1 - - [17/May/2025 23:38:11] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-05-17 23:38:11,933 - INFO - 127.0.0.1 - - [17/May/2025 23:38:11] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:38:11,954 - INFO - 127.0.0.1 - - [17/May/2025 23:38:11] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:38:12,034 - INFO - 127.0.0.1 - - [17/May/2025 23:38:12] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:38:12,192 - INFO - 127.0.0.1 - - [17/May/2025 23:38:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:17,150 - INFO - 127.0.0.1 - - [17/May/2025 23:38:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:22,138 - INFO - 127.0.0.1 - - [17/May/2025 23:38:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:27,154 - INFO - 127.0.0.1 - - [17/May/2025 23:38:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:32,380 - INFO - 127.0.0.1 - - [17/May/2025 23:38:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:37,149 - INFO - 127.0.0.1 - - [17/May/2025 23:38:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:42,134 - INFO - 127.0.0.1 - - [17/May/2025 23:38:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:47,132 - INFO - 127.0.0.1 - - [17/May/2025 23:38:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:52,147 - INFO - 127.0.0.1 - - [17/May/2025 23:38:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:38:57,172 - INFO - 127.0.0.1 - - [17/May/2025 23:38:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:02,253 - INFO - 127.0.0.1 - - [17/May/2025 23:39:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:07,135 - INFO - 127.0.0.1 - - [17/May/2025 23:39:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:12,133 - INFO - 127.0.0.1 - - [17/May/2025 23:39:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:17,252 - INFO - 127.0.0.1 - - [17/May/2025 23:39:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:22,181 - INFO - 127.0.0.1 - - [17/May/2025 23:39:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:27,132 - INFO - 127.0.0.1 - - [17/May/2025 23:39:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:32,141 - INFO - 127.0.0.1 - - [17/May/2025 23:39:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:37,143 - INFO - 127.0.0.1 - - [17/May/2025 23:39:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:42,144 - INFO - 127.0.0.1 - - [17/May/2025 23:39:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:47,254 - INFO - 127.0.0.1 - - [17/May/2025 23:39:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:52,296 - INFO - 127.0.0.1 - - [17/May/2025 23:39:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:39:52,310 - INFO - 127.0.0.1 - - [17/May/2025 23:39:52] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:39:52,310 - INFO - 127.0.0.1 - - [17/May/2025 23:39:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-17 23:39:57,247 - INFO - 127.0.0.1 - - [17/May/2025 23:39:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:02,254 - INFO - 127.0.0.1 - - [17/May/2025 23:40:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:03,092 - INFO - 127.0.0.1 - - [17/May/2025 23:40:03] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:40:03,213 - INFO - 127.0.0.1 - - [17/May/2025 23:40:03] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:07,157 - INFO - 127.0.0.1 - - [17/May/2025 23:40:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:12,154 - INFO - 127.0.0.1 - - [17/May/2025 23:40:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:17,138 - INFO - 127.0.0.1 - - [17/May/2025 23:40:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:22,242 - INFO - 127.0.0.1 - - [17/May/2025 23:40:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:27,248 - INFO - 127.0.0.1 - - [17/May/2025 23:40:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:32,861 - INFO - 127.0.0.1 - - [17/May/2025 23:40:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:37,854 - INFO - 127.0.0.1 - - [17/May/2025 23:40:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:44,658 - INFO - 127.0.0.1 - - [17/May/2025 23:40:44] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:48,032 - INFO - 127.0.0.1 - - [17/May/2025 23:40:48] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:52,997 - INFO - 127.0.0.1 - - [17/May/2025 23:40:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:40:57,911 - INFO - 127.0.0.1 - - [17/May/2025 23:40:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:41:03,002 - INFO - 127.0.0.1 - - [17/May/2025 23:41:03] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:41:07,886 - INFO - 127.0.0.1 - - [17/May/2025 23:41:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:41:12,882 - INFO - 127.0.0.1 - - [17/May/2025 23:41:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:41:40,863 - INFO - 127.0.0.1 - - [17/May/2025 23:41:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:42:40,966 - INFO - 127.0.0.1 - - [17/May/2025 23:42:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:43:40,974 - INFO - 127.0.0.1 - - [17/May/2025 23:43:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:43:46,052 - INFO - 127.0.0.1 - - [17/May/2025 23:43:46] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:43:47,255 - INFO - 127.0.0.1 - - [17/May/2025 23:43:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:43:52,339 - INFO - 127.0.0.1 - - [17/May/2025 23:43:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:43:57,251 - INFO - 127.0.0.1 - - [17/May/2025 23:43:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:02,155 - INFO - 127.0.0.1 - - [17/May/2025 23:44:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:07,152 - INFO - 127.0.0.1 - - [17/May/2025 23:44:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:12,135 - INFO - 127.0.0.1 - - [17/May/2025 23:44:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:17,152 - INFO - 127.0.0.1 - - [17/May/2025 23:44:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:22,139 - INFO - 127.0.0.1 - - [17/May/2025 23:44:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:27,160 - INFO - 127.0.0.1 - - [17/May/2025 23:44:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:32,968 - INFO - 127.0.0.1 - - [17/May/2025 23:44:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:37,139 - INFO - 127.0.0.1 - - [17/May/2025 23:44:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:42,129 - INFO - 127.0.0.1 - - [17/May/2025 23:44:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:47,247 - INFO - 127.0.0.1 - - [17/May/2025 23:44:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:52,156 - INFO - 127.0.0.1 - - [17/May/2025 23:44:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:44:54,094 - INFO - 127.0.0.1 - - [17/May/2025 23:44:54] "GET /eventos_filtrados?anio=2025&mes=05&dia=18 HTTP/1.1" 200 -
+2025-05-17 23:44:57,129 - INFO - 127.0.0.1 - - [17/May/2025 23:44:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:02,133 - INFO - 127.0.0.1 - - [17/May/2025 23:45:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:07,238 - INFO - 127.0.0.1 - - [17/May/2025 23:45:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:12,137 - INFO - 127.0.0.1 - - [17/May/2025 23:45:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:17,158 - INFO - 127.0.0.1 - - [17/May/2025 23:45:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:22,143 - INFO - 127.0.0.1 - - [17/May/2025 23:45:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:27,276 - INFO - 127.0.0.1 - - [17/May/2025 23:45:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:32,172 - INFO - 127.0.0.1 - - [17/May/2025 23:45:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:37,133 - INFO - 127.0.0.1 - - [17/May/2025 23:45:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:42,151 - INFO - 127.0.0.1 - - [17/May/2025 23:45:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:47,260 - INFO - 127.0.0.1 - - [17/May/2025 23:45:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:52,136 - INFO - 127.0.0.1 - - [17/May/2025 23:45:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:45:57,253 - INFO - 127.0.0.1 - - [17/May/2025 23:45:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:02,374 - INFO - 127.0.0.1 - - [17/May/2025 23:46:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:07,278 - INFO - 127.0.0.1 - - [17/May/2025 23:46:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:12,139 - INFO - 127.0.0.1 - - [17/May/2025 23:46:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:17,270 - INFO - 127.0.0.1 - - [17/May/2025 23:46:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:22,172 - INFO - 127.0.0.1 - - [17/May/2025 23:46:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:27,141 - INFO - 127.0.0.1 - - [17/May/2025 23:46:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:32,165 - INFO - 127.0.0.1 - - [17/May/2025 23:46:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:37,184 - INFO - 127.0.0.1 - - [17/May/2025 23:46:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:42,254 - INFO - 127.0.0.1 - - [17/May/2025 23:46:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:47,145 - INFO - 127.0.0.1 - - [17/May/2025 23:46:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:52,263 - INFO - 127.0.0.1 - - [17/May/2025 23:46:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:46:57,129 - INFO - 127.0.0.1 - - [17/May/2025 23:46:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:02,147 - INFO - 127.0.0.1 - - [17/May/2025 23:47:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:07,173 - INFO - 127.0.0.1 - - [17/May/2025 23:47:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:12,150 - INFO - 127.0.0.1 - - [17/May/2025 23:47:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:17,160 - INFO - 127.0.0.1 - - [17/May/2025 23:47:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:22,359 - INFO - 127.0.0.1 - - [17/May/2025 23:47:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:27,136 - INFO - 127.0.0.1 - - [17/May/2025 23:47:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:32,138 - INFO - 127.0.0.1 - - [17/May/2025 23:47:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:37,274 - INFO - 127.0.0.1 - - [17/May/2025 23:47:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:42,162 - INFO - 127.0.0.1 - - [17/May/2025 23:47:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:47,144 - INFO - 127.0.0.1 - - [17/May/2025 23:47:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:52,169 - INFO - 127.0.0.1 - - [17/May/2025 23:47:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:47:57,864 - INFO - 127.0.0.1 - - [17/May/2025 23:47:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:04,769 - INFO - 127.0.0.1 - - [17/May/2025 23:48:04] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:07,889 - INFO - 127.0.0.1 - - [17/May/2025 23:48:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:12,888 - INFO - 127.0.0.1 - - [17/May/2025 23:48:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:17,891 - INFO - 127.0.0.1 - - [17/May/2025 23:48:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:22,891 - INFO - 127.0.0.1 - - [17/May/2025 23:48:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:27,971 - INFO - 127.0.0.1 - - [17/May/2025 23:48:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:32,866 - INFO - 127.0.0.1 - - [17/May/2025 23:48:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:37,863 - INFO - 127.0.0.1 - - [17/May/2025 23:48:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:42,892 - INFO - 127.0.0.1 - - [17/May/2025 23:48:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:47,865 - INFO - 127.0.0.1 - - [17/May/2025 23:48:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:52,882 - INFO - 127.0.0.1 - - [17/May/2025 23:48:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:48:57,858 - INFO - 127.0.0.1 - - [17/May/2025 23:48:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:49:02,986 - INFO - 127.0.0.1 - - [17/May/2025 23:49:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:49:07,876 - INFO - 127.0.0.1 - - [17/May/2025 23:49:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:49:12,986 - INFO - 127.0.0.1 - - [17/May/2025 23:49:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:49:40,924 - INFO - 127.0.0.1 - - [17/May/2025 23:49:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:50:35,900 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:50:35,908 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:50:35,946 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:50:35,946 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:50:35,948 - INFO -  * Restarting with stat
+2025-05-17 23:50:36,455 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:50:36,463 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:50:36,490 - WARNING -  * Debugger is active!
+2025-05-17 23:50:36,494 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:50:38,577 - INFO - 127.0.0.1 - - [17/May/2025 23:50:38] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:50:39,956 - INFO - 127.0.0.1 - - [17/May/2025 23:50:39] "GET / HTTP/1.1" 200 -
+2025-05-17 23:50:40,130 - INFO - 127.0.0.1 - - [17/May/2025 23:50:40] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-17 23:50:40,138 - INFO - 127.0.0.1 - - [17/May/2025 23:50:40] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-05-17 23:50:40,143 - INFO - 127.0.0.1 - - [17/May/2025 23:50:40] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:50:40,263 - INFO - 127.0.0.1 - - [17/May/2025 23:50:40] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:50:40,384 - INFO - 127.0.0.1 - - [17/May/2025 23:50:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:50:45,356 - INFO - 127.0.0.1 - - [17/May/2025 23:50:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:50:50,384 - INFO - 127.0.0.1 - - [17/May/2025 23:50:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:50:55,374 - INFO - 127.0.0.1 - - [17/May/2025 23:50:55] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:00,381 - INFO - 127.0.0.1 - - [17/May/2025 23:51:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:05,375 - INFO - 127.0.0.1 - - [17/May/2025 23:51:05] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:10,492 - INFO - 127.0.0.1 - - [17/May/2025 23:51:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:16,512 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:51:16,520 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:51:16,559 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:51:16,559 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:51:16,561 - INFO -  * Restarting with stat
+2025-05-17 23:51:17,160 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:51:17,166 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:51:17,194 - WARNING -  * Debugger is active!
+2025-05-17 23:51:17,198 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:51:18,119 - INFO - 127.0.0.1 - - [17/May/2025 23:51:18] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:19,656 - INFO - 127.0.0.1 - - [17/May/2025 23:51:19] "GET / HTTP/1.1" 200 -
+2025-05-17 23:51:19,813 - INFO - 127.0.0.1 - - [17/May/2025 23:51:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-17 23:51:19,833 - INFO - 127.0.0.1 - - [17/May/2025 23:51:19] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-17 23:51:19,839 - INFO - 127.0.0.1 - - [17/May/2025 23:51:19] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:51:19,849 - INFO - 127.0.0.1 - - [17/May/2025 23:51:19] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:51:19,941 - INFO - 127.0.0.1 - - [17/May/2025 23:51:19] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:51:20,174 - INFO - 127.0.0.1 - - [17/May/2025 23:51:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:25,032 - INFO - 127.0.0.1 - - [17/May/2025 23:51:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:30,169 - INFO - 127.0.0.1 - - [17/May/2025 23:51:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:35,074 - INFO - 127.0.0.1 - - [17/May/2025 23:51:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:40,023 - INFO - 127.0.0.1 - - [17/May/2025 23:51:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:45,041 - INFO - 127.0.0.1 - - [17/May/2025 23:51:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:50,025 - INFO - 127.0.0.1 - - [17/May/2025 23:51:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:51:55,177 - INFO - 127.0.0.1 - - [17/May/2025 23:51:55] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:00,980 - INFO - 127.0.0.1 - - [17/May/2025 23:52:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:05,048 - INFO - 127.0.0.1 - - [17/May/2025 23:52:05] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:10,034 - INFO - 127.0.0.1 - - [17/May/2025 23:52:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:15,134 - INFO - 127.0.0.1 - - [17/May/2025 23:52:15] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:20,257 - INFO - 127.0.0.1 - - [17/May/2025 23:52:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:25,055 - INFO - 127.0.0.1 - - [17/May/2025 23:52:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:30,022 - INFO - 127.0.0.1 - - [17/May/2025 23:52:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:35,046 - INFO - 127.0.0.1 - - [17/May/2025 23:52:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:40,850 - INFO - 127.0.0.1 - - [17/May/2025 23:52:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:45,856 - INFO - 127.0.0.1 - - [17/May/2025 23:52:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:50,981 - INFO - 127.0.0.1 - - [17/May/2025 23:52:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:52:56,066 - INFO - 127.0.0.1 - - [17/May/2025 23:52:56] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:00,862 - INFO - 127.0.0.1 - - [17/May/2025 23:53:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:05,968 - INFO - 127.0.0.1 - - [17/May/2025 23:53:05] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:10,860 - INFO - 127.0.0.1 - - [17/May/2025 23:53:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:15,852 - INFO - 127.0.0.1 - - [17/May/2025 23:53:15] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:20,955 - INFO - 127.0.0.1 - - [17/May/2025 23:53:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:25,860 - INFO - 127.0.0.1 - - [17/May/2025 23:53:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:30,962 - INFO - 127.0.0.1 - - [17/May/2025 23:53:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:38,685 - INFO - 127.0.0.1 - - [17/May/2025 23:53:38] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:38,696 - INFO - 127.0.0.1 - - [17/May/2025 23:53:38] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:53:38,700 - INFO - 127.0.0.1 - - [17/May/2025 23:53:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-17 23:53:40,054 - INFO - 127.0.0.1 - - [17/May/2025 23:53:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:45,021 - INFO - 127.0.0.1 - - [17/May/2025 23:53:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:47,493 - INFO - 127.0.0.1 - - [17/May/2025 23:53:47] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:53:47,603 - INFO - 127.0.0.1 - - [17/May/2025 23:53:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:50,121 - INFO - 127.0.0.1 - - [17/May/2025 23:53:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:51,388 - INFO - 127.0.0.1 - - [17/May/2025 23:53:51] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:53:51,603 - INFO - 127.0.0.1 - - [17/May/2025 23:53:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:53:55,028 - INFO - 127.0.0.1 - - [17/May/2025 23:53:55] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:00,132 - INFO - 127.0.0.1 - - [17/May/2025 23:54:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:05,037 - INFO - 127.0.0.1 - - [17/May/2025 23:54:05] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:10,143 - INFO - 127.0.0.1 - - [17/May/2025 23:54:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:15,133 - INFO - 127.0.0.1 - - [17/May/2025 23:54:15] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:20,167 - INFO - 127.0.0.1 - - [17/May/2025 23:54:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:25,148 - INFO - 127.0.0.1 - - [17/May/2025 23:54:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:30,139 - INFO - 127.0.0.1 - - [17/May/2025 23:54:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:35,146 - INFO - 127.0.0.1 - - [17/May/2025 23:54:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:36,484 - INFO - 127.0.0.1 - - [17/May/2025 23:54:36] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:54:36,488 - INFO - 127.0.0.1 - - [17/May/2025 23:54:36] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:40,145 - INFO - 127.0.0.1 - - [17/May/2025 23:54:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:45,740 - INFO - 127.0.0.1 - - [17/May/2025 23:54:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:50,149 - INFO - 127.0.0.1 - - [17/May/2025 23:54:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:51,036 - INFO - 127.0.0.1 - - [17/May/2025 23:54:51] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:54:51,155 - INFO - 127.0.0.1 - - [17/May/2025 23:54:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:54:55,045 - INFO - 127.0.0.1 - - [17/May/2025 23:54:55] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:00,299 - INFO - 127.0.0.1 - - [17/May/2025 23:55:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:05,034 - INFO - 127.0.0.1 - - [17/May/2025 23:55:05] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:10,026 - INFO - 127.0.0.1 - - [17/May/2025 23:55:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:12,828 - INFO - 127.0.0.1 - - [17/May/2025 23:55:12] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:55:12,986 - INFO - 127.0.0.1 - - [17/May/2025 23:55:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:15,131 - INFO - 127.0.0.1 - - [17/May/2025 23:55:15] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:20,134 - INFO - 127.0.0.1 - - [17/May/2025 23:55:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:25,037 - INFO - 127.0.0.1 - - [17/May/2025 23:55:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:30,034 - INFO - 127.0.0.1 - - [17/May/2025 23:55:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:35,064 - INFO - 127.0.0.1 - - [17/May/2025 23:55:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:40,027 - INFO - 127.0.0.1 - - [17/May/2025 23:55:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:45,137 - INFO - 127.0.0.1 - - [17/May/2025 23:55:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:50,135 - INFO - 127.0.0.1 - - [17/May/2025 23:55:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:55:55,018 - INFO - 127.0.0.1 - - [17/May/2025 23:55:55] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:00,628 - INFO - 127.0.0.1 - - [17/May/2025 23:56:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:05,973 - INFO - 127.0.0.1 - - [17/May/2025 23:56:05] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:10,967 - INFO - 127.0.0.1 - - [17/May/2025 23:56:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:15,964 - INFO - 127.0.0.1 - - [17/May/2025 23:56:15] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:20,865 - INFO - 127.0.0.1 - - [17/May/2025 23:56:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:25,890 - INFO - 127.0.0.1 - - [17/May/2025 23:56:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:30,859 - INFO - 127.0.0.1 - - [17/May/2025 23:56:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:35,973 - INFO - 127.0.0.1 - - [17/May/2025 23:56:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:40,961 - INFO - 127.0.0.1 - - [17/May/2025 23:56:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:45,850 - INFO - 127.0.0.1 - - [17/May/2025 23:56:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:50,961 - INFO - 127.0.0.1 - - [17/May/2025 23:56:50] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:56:55,858 - INFO - 127.0.0.1 - - [17/May/2025 23:56:55] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:57:00,851 - INFO - 127.0.0.1 - - [17/May/2025 23:57:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:57:40,857 - INFO - 127.0.0.1 - - [17/May/2025 23:57:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:58:40,891 - INFO - 127.0.0.1 - - [17/May/2025 23:58:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:59:40,893 - INFO - 127.0.0.1 - - [17/May/2025 23:59:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:59:48,716 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:59:48,724 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:59:48,767 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-17 23:59:48,767 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-17 23:59:48,769 - INFO -  * Restarting with stat
+2025-05-17 23:59:49,268 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-17 23:59:49,277 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-17 23:59:49,311 - WARNING -  * Debugger is active!
+2025-05-17 23:59:49,315 - INFO -  * Debugger PIN: 166-649-557
+2025-05-17 23:59:51,787 - INFO - 127.0.0.1 - - [17/May/2025 23:59:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:59:53,551 - INFO - 127.0.0.1 - - [17/May/2025 23:59:53] "GET / HTTP/1.1" 200 -
+2025-05-17 23:59:53,715 - INFO - 127.0.0.1 - - [17/May/2025 23:59:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-17 23:59:53,747 - INFO - 127.0.0.1 - - [17/May/2025 23:59:53] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-17 23:59:53,754 - INFO - 127.0.0.1 - - [17/May/2025 23:59:53] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:59:53,767 - INFO - 127.0.0.1 - - [17/May/2025 23:59:53] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-17 23:59:53,878 - INFO - 127.0.0.1 - - [17/May/2025 23:59:53] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-17 23:59:54,016 - INFO - 127.0.0.1 - - [17/May/2025 23:59:54] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-17 23:59:58,975 - INFO - 127.0.0.1 - - [17/May/2025 23:59:58] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:03,951 - INFO - 127.0.0.1 - - [18/May/2025 00:00:03] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:08,967 - INFO - 127.0.0.1 - - [18/May/2025 00:00:08] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:14,068 - INFO - 127.0.0.1 - - [18/May/2025 00:00:14] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:19,168 - INFO - 127.0.0.1 - - [18/May/2025 00:00:19] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:24,082 - INFO - 127.0.0.1 - - [18/May/2025 00:00:24] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:28,998 - INFO - 127.0.0.1 - - [18/May/2025 00:00:28] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:33,950 - INFO - 127.0.0.1 - - [18/May/2025 00:00:33] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:38,970 - INFO - 127.0.0.1 - - [18/May/2025 00:00:38] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:45,042 - INFO - 127.0.0.1 - - [18/May/2025 00:00:45] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:49,987 - INFO - 127.0.0.1 - - [18/May/2025 00:00:49] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:54,912 - INFO - 127.0.0.1 - - [18/May/2025 00:00:54] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:00:59,881 - INFO - 127.0.0.1 - - [18/May/2025 00:00:59] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:04,871 - INFO - 127.0.0.1 - - [18/May/2025 00:01:04] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:10,039 - INFO - 127.0.0.1 - - [18/May/2025 00:01:10] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:14,868 - INFO - 127.0.0.1 - - [18/May/2025 00:01:14] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:19,921 - INFO - 127.0.0.1 - - [18/May/2025 00:01:19] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:25,073 - INFO - 127.0.0.1 - - [18/May/2025 00:01:25] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:29,862 - INFO - 127.0.0.1 - - [18/May/2025 00:01:29] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:35,012 - INFO - 127.0.0.1 - - [18/May/2025 00:01:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:39,980 - INFO - 127.0.0.1 - - [18/May/2025 00:01:39] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:44,863 - INFO - 127.0.0.1 - - [18/May/2025 00:01:44] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:51,404 - INFO - 127.0.0.1 - - [18/May/2025 00:01:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:53,989 - INFO - 127.0.0.1 - - [18/May/2025 00:01:53] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:01:59,898 - INFO - 127.0.0.1 - - [18/May/2025 00:01:59] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:04,884 - INFO - 127.0.0.1 - - [18/May/2025 00:02:04] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:09,885 - INFO - 127.0.0.1 - - [18/May/2025 00:02:09] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:14,126 - INFO - 127.0.0.1 - - [18/May/2025 00:02:14] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:20,014 - INFO - 127.0.0.1 - - [18/May/2025 00:02:20] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:24,883 - INFO - 127.0.0.1 - - [18/May/2025 00:02:24] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:30,016 - INFO - 127.0.0.1 - - [18/May/2025 00:02:30] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:34,884 - INFO - 127.0.0.1 - - [18/May/2025 00:02:34] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:39,998 - INFO - 127.0.0.1 - - [18/May/2025 00:02:39] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:44,874 - INFO - 127.0.0.1 - - [18/May/2025 00:02:44] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:49,884 - INFO - 127.0.0.1 - - [18/May/2025 00:02:49] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:02:54,982 - INFO - 127.0.0.1 - - [18/May/2025 00:02:54] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:03:00,005 - INFO - 127.0.0.1 - - [18/May/2025 00:03:00] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:03:04,905 - INFO - 127.0.0.1 - - [18/May/2025 00:03:04] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:03:09,868 - INFO - 127.0.0.1 - - [18/May/2025 00:03:09] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:03:14,920 - INFO - 127.0.0.1 - - [18/May/2025 00:03:14] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:03:42,715 - INFO - 127.0.0.1 - - [18/May/2025 00:03:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:04:32,567 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-18 00:04:32,578 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-18 00:04:32,625 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-18 00:04:32,625 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-18 00:04:32,627 - INFO -  * Restarting with stat
+2025-05-18 00:04:33,235 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-18 00:04:33,247 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-18 00:04:33,278 - WARNING -  * Debugger is active!
+2025-05-18 00:04:33,282 - INFO -  * Debugger PIN: 166-649-557
+2025-05-18 00:04:35,112 - INFO - 127.0.0.1 - - [18/May/2025 00:04:35] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:04:38,993 - INFO - 127.0.0.1 - - [18/May/2025 00:04:38] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:04:44,032 - INFO - 127.0.0.1 - - [18/May/2025 00:04:44] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:04:47,887 - INFO - 127.0.0.1 - - [18/May/2025 00:04:47] "GET / HTTP/1.1" 200 -
+2025-05-18 00:04:48,186 - INFO - 127.0.0.1 - - [18/May/2025 00:04:48] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-18 00:04:48,197 - INFO - 127.0.0.1 - - [18/May/2025 00:04:48] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-18 00:04:48,205 - INFO - 127.0.0.1 - - [18/May/2025 00:04:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-18 00:04:48,361 - INFO - 127.0.0.1 - - [18/May/2025 00:04:48] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:04:48,513 - INFO - 127.0.0.1 - - [18/May/2025 00:04:48] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:04:53,484 - INFO - 127.0.0.1 - - [18/May/2025 00:04:53] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:04:58,498 - INFO - 127.0.0.1 - - [18/May/2025 00:04:58] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:03,488 - INFO - 127.0.0.1 - - [18/May/2025 00:05:03] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:08,493 - INFO - 127.0.0.1 - - [18/May/2025 00:05:08] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:13,510 - INFO - 127.0.0.1 - - [18/May/2025 00:05:13] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:15,234 - INFO - 127.0.0.1 - - [18/May/2025 00:05:15] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:05:15,397 - INFO - 127.0.0.1 - - [18/May/2025 00:05:15] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:18,499 - INFO - 127.0.0.1 - - [18/May/2025 00:05:18] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:18,695 - INFO - 127.0.0.1 - - [18/May/2025 00:05:18] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:05:18,841 - INFO - 127.0.0.1 - - [18/May/2025 00:05:18] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:23,498 - INFO - 127.0.0.1 - - [18/May/2025 00:05:23] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:29,046 - INFO - 127.0.0.1 - - [18/May/2025 00:05:29] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:37,558 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-18 00:05:37,568 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-18 00:05:37,614 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-18 00:05:37,615 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-18 00:05:37,616 - INFO -  * Restarting with stat
+2025-05-18 00:05:38,258 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-18 00:05:38,271 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-18 00:05:38,313 - WARNING -  * Debugger is active!
+2025-05-18 00:05:38,318 - INFO -  * Debugger PIN: 166-649-557
+2025-05-18 00:05:39,067 - INFO - 127.0.0.1 - - [18/May/2025 00:05:39] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:41,462 - INFO - 127.0.0.1 - - [18/May/2025 00:05:41] "GET / HTTP/1.1" 200 -
+2025-05-18 00:05:41,657 - INFO - 127.0.0.1 - - [18/May/2025 00:05:41] "GET /static/js/dashboard.js HTTP/1.1" 200 -
+2025-05-18 00:05:41,688 - INFO - 127.0.0.1 - - [18/May/2025 00:05:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-18 00:05:41,693 - INFO - 127.0.0.1 - - [18/May/2025 00:05:41] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-18 00:05:41,937 - INFO - 127.0.0.1 - - [18/May/2025 00:05:41] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:05:41,991 - INFO - 127.0.0.1 - - [18/May/2025 00:05:41] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:44,136 - INFO - 127.0.0.1 - - [18/May/2025 00:05:44] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:05:44,281 - INFO - 127.0.0.1 - - [18/May/2025 00:05:44] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:46,621 - INFO - 127.0.0.1 - - [18/May/2025 00:05:46] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:05:46,986 - INFO - 127.0.0.1 - - [18/May/2025 00:05:46] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:47,319 - INFO - 127.0.0.1 - - [18/May/2025 00:05:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:51,985 - INFO - 127.0.0.1 - - [18/May/2025 00:05:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:05:56,982 - INFO - 127.0.0.1 - - [18/May/2025 00:05:56] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:01,959 - INFO - 127.0.0.1 - - [18/May/2025 00:06:01] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:07,012 - INFO - 127.0.0.1 - - [18/May/2025 00:06:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:11,999 - INFO - 127.0.0.1 - - [18/May/2025 00:06:11] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:12,227 - INFO - 127.0.0.1 - - [18/May/2025 00:06:12] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:06:12,463 - INFO - 127.0.0.1 - - [18/May/2025 00:06:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:17,095 - INFO - 127.0.0.1 - - [18/May/2025 00:06:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:21,997 - INFO - 127.0.0.1 - - [18/May/2025 00:06:21] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:27,101 - INFO - 127.0.0.1 - - [18/May/2025 00:06:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:32,184 - INFO - 127.0.0.1 - - [18/May/2025 00:06:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:37,200 - INFO - 127.0.0.1 - - [18/May/2025 00:06:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:41,982 - INFO - 127.0.0.1 - - [18/May/2025 00:06:41] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:46,946 - INFO - 127.0.0.1 - - [18/May/2025 00:06:46] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:51,999 - INFO - 127.0.0.1 - - [18/May/2025 00:06:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:57,007 - INFO - 127.0.0.1 - - [18/May/2025 00:06:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:06:57,027 - INFO - 127.0.0.1 - - [18/May/2025 00:06:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-18 00:06:57,027 - INFO - 127.0.0.1 - - [18/May/2025 00:06:57] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-18 00:07:01,981 - INFO - 127.0.0.1 - - [18/May/2025 00:07:01] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:06,983 - INFO - 127.0.0.1 - - [18/May/2025 00:07:06] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:07,810 - INFO - 127.0.0.1 - - [18/May/2025 00:07:07] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:07:07,851 - INFO - 127.0.0.1 - - [18/May/2025 00:07:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:12,104 - INFO - 127.0.0.1 - - [18/May/2025 00:07:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:17,069 - INFO - 127.0.0.1 - - [18/May/2025 00:07:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:22,078 - INFO - 127.0.0.1 - - [18/May/2025 00:07:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:26,977 - INFO - 127.0.0.1 - - [18/May/2025 00:07:26] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:32,085 - INFO - 127.0.0.1 - - [18/May/2025 00:07:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:36,963 - INFO - 127.0.0.1 - - [18/May/2025 00:07:36] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:41,984 - INFO - 127.0.0.1 - - [18/May/2025 00:07:41] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:47,021 - INFO - 127.0.0.1 - - [18/May/2025 00:07:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:49,456 - INFO - 127.0.0.1 - - [18/May/2025 00:07:49] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:07:49,600 - INFO - 127.0.0.1 - - [18/May/2025 00:07:49] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:51,954 - INFO - 127.0.0.1 - - [18/May/2025 00:07:51] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:07:56,979 - INFO - 127.0.0.1 - - [18/May/2025 00:07:56] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:01,964 - INFO - 127.0.0.1 - - [18/May/2025 00:08:01] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:07,968 - INFO - 127.0.0.1 - - [18/May/2025 00:08:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:12,920 - INFO - 127.0.0.1 - - [18/May/2025 00:08:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:17,925 - INFO - 127.0.0.1 - - [18/May/2025 00:08:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:22,911 - INFO - 127.0.0.1 - - [18/May/2025 00:08:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:27,932 - INFO - 127.0.0.1 - - [18/May/2025 00:08:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:32,912 - INFO - 127.0.0.1 - - [18/May/2025 00:08:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:37,960 - INFO - 127.0.0.1 - - [18/May/2025 00:08:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:43,011 - INFO - 127.0.0.1 - - [18/May/2025 00:08:43] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:48,029 - INFO - 127.0.0.1 - - [18/May/2025 00:08:48] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:53,028 - INFO - 127.0.0.1 - - [18/May/2025 00:08:53] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:08:57,993 - INFO - 127.0.0.1 - - [18/May/2025 00:08:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:09:02,995 - INFO - 127.0.0.1 - - [18/May/2025 00:09:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:09:41,010 - INFO - 127.0.0.1 - - [18/May/2025 00:09:41] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:09:46,782 - INFO - 127.0.0.1 - - [18/May/2025 00:09:46] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:09:47,195 - INFO - 127.0.0.1 - - [18/May/2025 00:09:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:09:52,145 - INFO - 127.0.0.1 - - [18/May/2025 00:09:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:09:57,074 - INFO - 127.0.0.1 - - [18/May/2025 00:09:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:02,052 - INFO - 127.0.0.1 - - [18/May/2025 00:10:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:07,037 - INFO - 127.0.0.1 - - [18/May/2025 00:10:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:12,016 - INFO - 127.0.0.1 - - [18/May/2025 00:10:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:17,060 - INFO - 127.0.0.1 - - [18/May/2025 00:10:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:22,057 - INFO - 127.0.0.1 - - [18/May/2025 00:10:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:27,041 - INFO - 127.0.0.1 - - [18/May/2025 00:10:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:32,251 - INFO - 127.0.0.1 - - [18/May/2025 00:10:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:37,041 - INFO - 127.0.0.1 - - [18/May/2025 00:10:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:42,051 - INFO - 127.0.0.1 - - [18/May/2025 00:10:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:47,154 - INFO - 127.0.0.1 - - [18/May/2025 00:10:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:52,017 - INFO - 127.0.0.1 - - [18/May/2025 00:10:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:10:57,258 - INFO - 127.0.0.1 - - [18/May/2025 00:10:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:02,039 - INFO - 127.0.0.1 - - [18/May/2025 00:11:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:07,033 - INFO - 127.0.0.1 - - [18/May/2025 00:11:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:12,035 - INFO - 127.0.0.1 - - [18/May/2025 00:11:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:17,374 - INFO - 127.0.0.1 - - [18/May/2025 00:11:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:22,039 - INFO - 127.0.0.1 - - [18/May/2025 00:11:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:27,359 - INFO - 127.0.0.1 - - [18/May/2025 00:11:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:32,019 - INFO - 127.0.0.1 - - [18/May/2025 00:11:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:37,135 - INFO - 127.0.0.1 - - [18/May/2025 00:11:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:42,042 - INFO - 127.0.0.1 - - [18/May/2025 00:11:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:47,008 - INFO - 127.0.0.1 - - [18/May/2025 00:11:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:52,057 - INFO - 127.0.0.1 - - [18/May/2025 00:11:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:11:57,126 - INFO - 127.0.0.1 - - [18/May/2025 00:11:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:02,153 - INFO - 127.0.0.1 - - [18/May/2025 00:12:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:07,020 - INFO - 127.0.0.1 - - [18/May/2025 00:12:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:12,257 - INFO - 127.0.0.1 - - [18/May/2025 00:12:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:17,165 - INFO - 127.0.0.1 - - [18/May/2025 00:12:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:22,055 - INFO - 127.0.0.1 - - [18/May/2025 00:12:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:27,131 - INFO - 127.0.0.1 - - [18/May/2025 00:12:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:32,027 - INFO - 127.0.0.1 - - [18/May/2025 00:12:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:37,052 - INFO - 127.0.0.1 - - [18/May/2025 00:12:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:42,047 - INFO - 127.0.0.1 - - [18/May/2025 00:12:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:47,015 - INFO - 127.0.0.1 - - [18/May/2025 00:12:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:52,156 - INFO - 127.0.0.1 - - [18/May/2025 00:12:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:12:57,026 - INFO - 127.0.0.1 - - [18/May/2025 00:12:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:02,027 - INFO - 127.0.0.1 - - [18/May/2025 00:13:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:07,026 - INFO - 127.0.0.1 - - [18/May/2025 00:13:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:12,039 - INFO - 127.0.0.1 - - [18/May/2025 00:13:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:17,057 - INFO - 127.0.0.1 - - [18/May/2025 00:13:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:22,030 - INFO - 127.0.0.1 - - [18/May/2025 00:13:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:27,128 - INFO - 127.0.0.1 - - [18/May/2025 00:13:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:32,029 - INFO - 127.0.0.1 - - [18/May/2025 00:13:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:37,070 - INFO - 127.0.0.1 - - [18/May/2025 00:13:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:42,028 - INFO - 127.0.0.1 - - [18/May/2025 00:13:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:47,036 - INFO - 127.0.0.1 - - [18/May/2025 00:13:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:52,053 - INFO - 127.0.0.1 - - [18/May/2025 00:13:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:13:57,048 - INFO - 127.0.0.1 - - [18/May/2025 00:13:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:02,197 - INFO - 127.0.0.1 - - [18/May/2025 00:14:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:07,018 - INFO - 127.0.0.1 - - [18/May/2025 00:14:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:12,259 - INFO - 127.0.0.1 - - [18/May/2025 00:14:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:17,003 - INFO - 127.0.0.1 - - [18/May/2025 00:14:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:21,905 - INFO - 127.0.0.1 - - [18/May/2025 00:14:21] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:27,017 - INFO - 127.0.0.1 - - [18/May/2025 00:14:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:32,010 - INFO - 127.0.0.1 - - [18/May/2025 00:14:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:36,889 - INFO - 127.0.0.1 - - [18/May/2025 00:14:36] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:41,904 - INFO - 127.0.0.1 - - [18/May/2025 00:14:41] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:47,860 - INFO - 127.0.0.1 - - [18/May/2025 00:14:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:52,845 - INFO - 127.0.0.1 - - [18/May/2025 00:14:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:14:57,845 - INFO - 127.0.0.1 - - [18/May/2025 00:14:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:02,967 - INFO - 127.0.0.1 - - [18/May/2025 00:15:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:07,954 - INFO - 127.0.0.1 - - [18/May/2025 00:15:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:12,860 - INFO - 127.0.0.1 - - [18/May/2025 00:15:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:17,859 - INFO - 127.0.0.1 - - [18/May/2025 00:15:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:22,861 - INFO - 127.0.0.1 - - [18/May/2025 00:15:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:27,849 - INFO - 127.0.0.1 - - [18/May/2025 00:15:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:32,846 - INFO - 127.0.0.1 - - [18/May/2025 00:15:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:37,868 - INFO - 127.0.0.1 - - [18/May/2025 00:15:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:15:42,860 - INFO - 127.0.0.1 - - [18/May/2025 00:15:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:16:41,072 - INFO - 127.0.0.1 - - [18/May/2025 00:16:41] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:17:40,963 - INFO - 127.0.0.1 - - [18/May/2025 00:17:40] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:20,833 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-18 00:18:20,844 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-18 00:18:20,897 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.6:5000
+2025-05-18 00:18:20,897 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-18 00:18:20,898 - INFO -  * Restarting with stat
+2025-05-18 00:18:21,437 - INFO - Conexión a la base de datos establecida correctamente
+2025-05-18 00:18:21,446 - INFO - Archivo de sonido copiado a: c:\Users\braya\Desktop\proyecto arquitectura dashboard\proyecto arquitectura\tokyo_dashboard\static\sound\alerta.mp3
+2025-05-18 00:18:21,478 - WARNING -  * Debugger is active!
+2025-05-18 00:18:21,482 - INFO -  * Debugger PIN: 166-649-557
+2025-05-18 00:18:22,292 - INFO - 127.0.0.1 - - [18/May/2025 00:18:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:26,669 - INFO - 127.0.0.1 - - [18/May/2025 00:18:26] "GET / HTTP/1.1" 200 -
+2025-05-18 00:18:26,897 - INFO - 127.0.0.1 - - [18/May/2025 00:18:26] "[36mGET /static/js/dashboard.js HTTP/1.1[0m" 304 -
+2025-05-18 00:18:26,919 - INFO - 127.0.0.1 - - [18/May/2025 00:18:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-05-18 00:18:26,924 - INFO - 127.0.0.1 - - [18/May/2025 00:18:26] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-18 00:18:27,061 - INFO - 127.0.0.1 - - [18/May/2025 00:18:27] "GET /obtener_eventos HTTP/1.1" 200 -
+2025-05-18 00:18:27,292 - INFO - 127.0.0.1 - - [18/May/2025 00:18:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:32,133 - INFO - 127.0.0.1 - - [18/May/2025 00:18:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:37,134 - INFO - 127.0.0.1 - - [18/May/2025 00:18:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:42,122 - INFO - 127.0.0.1 - - [18/May/2025 00:18:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:47,118 - INFO - 127.0.0.1 - - [18/May/2025 00:18:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:52,117 - INFO - 127.0.0.1 - - [18/May/2025 00:18:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:18:57,124 - INFO - 127.0.0.1 - - [18/May/2025 00:18:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:02,115 - INFO - 127.0.0.1 - - [18/May/2025 00:19:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:07,129 - INFO - 127.0.0.1 - - [18/May/2025 00:19:07] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:12,133 - INFO - 127.0.0.1 - - [18/May/2025 00:19:12] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:17,340 - INFO - 127.0.0.1 - - [18/May/2025 00:19:17] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:17,439 - INFO - 127.0.0.1 - - [18/May/2025 00:19:17] "[35m[1mGET /static/sound/alerta.mp3 HTTP/1.1[0m" 206 -
+2025-05-18 00:19:17,532 - INFO - 127.0.0.1 - - [18/May/2025 00:19:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-18 00:19:22,623 - INFO - 127.0.0.1 - - [18/May/2025 00:19:22] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:27,130 - INFO - 127.0.0.1 - - [18/May/2025 00:19:27] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:32,169 - INFO - 127.0.0.1 - - [18/May/2025 00:19:32] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:37,256 - INFO - 127.0.0.1 - - [18/May/2025 00:19:37] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:42,225 - INFO - 127.0.0.1 - - [18/May/2025 00:19:42] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:47,120 - INFO - 127.0.0.1 - - [18/May/2025 00:19:47] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:52,122 - INFO - 127.0.0.1 - - [18/May/2025 00:19:52] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:19:57,888 - INFO - 127.0.0.1 - - [18/May/2025 00:19:57] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:20:02,134 - INFO - 127.0.0.1 - - [18/May/2025 00:20:02] "GET /estado_dashboard HTTP/1.1" 200 -
+2025-05-18 00:20:07,135 - INFO - 127.0.0.1 - - [18/May/2025 00:20:07] "GET /estado_dashboard HTTP/1.1" 200 -

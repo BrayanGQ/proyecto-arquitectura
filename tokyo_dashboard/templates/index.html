@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Consulta - Sistema Inteligente</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-microchip me-2"></i>
+                Dashboard de Consulta - TOKIO INTELIGENTE
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#equipoModal">
+                            <i class="fas fa-users me-1"></i> Equipo del Proyecto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Encabezado -->
+    <div class="container-fluid bg-primary text-white text-center py-3 mb-4">
+        <h1><i class="fas fa-satellite-dish me-2"></i> SISTEMA DE MONITOREO - EVENTOS EN VIVO</h1>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <!-- Panel de información actual -->
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title"><i class="fas fa-info-circle me-2"></i> Estado Actual</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="temperatura-panel">
+                                    <h4 id="temperatura-label" class="text-primary">
+                                        <i class="fas fa-thermometer-half me-2"></i> Temperatura actual: -- °C
+                                    </h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="alerta-panel">
+                                    <h4 id="alerta-label" class="text-success">
+                                        <i class="fas fa-bell me-2"></i> Alerta: Sin eventos recientes
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <!-- Panel de filtros -->
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title"><i class="fas fa-filter me-2"></i> Filtros</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-end">
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="anio-filter" class="form-label">Año:</label>
+                                    <input type="number" class="form-control" id="anio-filter" placeholder="YYYY">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="mes-filter" class="form-label">Mes:</label>
+                                    <input type="number" class="form-control" id="mes-filter" placeholder="MM" min="1" max="12">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="dia-filter" class="form-label">Día:</label>
+                                    <input type="number" class="form-control" id="dia-filter" placeholder="DD" min="1" max="31">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label for="tipo-filter" class="form-label">Tipo de evento:</label>
+                                    <select class="form-select" id="tipo-filter">
+                                        <option value="Todos" selected>Todos</option>
+                                        <option value="Temperatura">Temperatura</option>
+                                        <option value="Alerta Sismica">Alerta Sísmica</option>
+                                        <option value="Incendio">Incendio</option>
+                                        <option value="Trafico Peatonal">Tráfico Peatonal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3 d-flex justify-content-end">
+                                    <button id="btn-buscar" class="btn btn-primary me-2">
+                                        <i class="fas fa-search me-1"></i> Buscar
+                                    </button>
+                                    <button id="btn-refrescar" class="btn btn-success">
+                                        <i class="fas fa-sync-alt me-1"></i> Refrescar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Tabla de eventos -->
+            <div class="col-md-12">
+                <div class="card shadow">
+                    <div class="card-header bg-light">
+                        <h3 class="card-title"><i class="fas fa-list-alt me-2"></i> Eventos Registrados</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="eventos-table" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha y Hora</th>
+                                        <th>Ubicación</th>
+                                        <th>Tipo de Evento</th>
+                                        <th>Descripción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="eventos-body">
+                                    <!-- Los datos se cargarán mediante JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0">
+                <i class="fas fa-code me-1"></i> Dashboard de Monitoreo Arduino &copy; 2025 | Arquitectura de Computadoras
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal de Alerta -->
+    <div class="modal fade" id="alertaModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-danger">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <span id="alerta-modal-titulo">¡ALERTA DE EMERGENCIA!</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="display-1 text-danger mb-4">⚠️</div>
+                    <h3 id="alerta-modal-tipo" class="mb-3">Tipo de Alerta</h3>
+                    <p id="alerta-modal-descripcion" class="lead">Descripción de la alerta</p>
+                    <p class="fst-italic text-muted">Se recomienda seguir los protocolos de seguridad establecidos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Equipo del Proyecto -->
+    <div class="modal fade" id="equipoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-users me-2"></i> Equipo del Proyecto
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row text-center mb-4">
+                            <div class="col-12">
+                                <h3 class="text-primary mb-4">Proyecto de Arquitectura de Computadoras 1</h3>
+                                <p class="lead">CIUDADES INTELIGENTES - TOKIO</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <h4><i class="fas fa-user-graduate me-2"></i> Integrantes del Equipo:</h4>
+                                <ul class="list-group mt-3">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Manuel Humberto Santos Lara</strong>
+                                        </div>
+                                        <span>3590-20-11448</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Brayan Alexander Gómez Quex</strong>
+                                        </div>
+                                        <span>3590-22-1395</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Manasés Ricardo Jiménez Paiz</strong>
+                                        </div>
+                                        <span>3590-22-4880</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Bryan Elí Miranda Vásquez</strong>
+                                        </div>
+                                        <span>3590-19-3178</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Fernando José Guerra Tobar</strong>
+                                        </div>
+                                        <span>3590-22-4496</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>Milton David Gil Rivera</strong>
+                                        </div>
+                                        <span>3590-09-66</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4><i class="fas fa-info-circle me-2"></i> Detalles del Proyecto:</h4>
+                                <div class="card mt-3">
+                                    <div class="card-body">
+                                        <p>Este dashboard implementa un sistema de monitoreo en tiempo real utilizando Arduino UNO como plataforma de hardware para la recolección de datos. El dashboard permite visualizar los datos recolectados y alertar sobre situaciones críticas como incendios o terremotos.</p>
+                                        <p>Tecnologías utilizadas:</p>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="badge bg-secondary">Arduino</span>
+                                            <span class="badge bg-secondary">Python</span>
+                                            <span class="badge bg-secondary">Flask</span>
+                                            <span class="badge bg-secondary">PostgreSQL</span>
+                                            <span class="badge bg-secondary">JavaScript</span>
+                                            <span class="badge bg-secondary">Bootstrap 5</span>
+                                            <span class="badge bg-secondary">HTML/CSS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sonido de alerta -->
+    <audio id="alerta-sonido" preload="auto">
+        <source src="{{ url_for('static', filename='sound/alerta.mp3') }}" type="audio/mpeg">
+    </audio>
+
+    <!-- JavaScript -->
+    <!-- jQuery, Bootstrap JS, DataTables -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <!-- JavaScript personalizado -->
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
