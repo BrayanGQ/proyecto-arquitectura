@@ -1,0 +1,573 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
+from conexion import ConexionDB
+import re
+import time
+import pygame
+import threading
+from datetime import datetime, timedelta
+import os
+import logging
+
+# Configurar logging para registrar errores y eventos importantes
+logging.basicConfig(
+    filename='dashboard.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+class Dashboard:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Dashboard de Monitoreo Arduino - Sistema Inteligente")
+        self.root.state("zoomed")  # Pantalla completa (Windows)
+
+        # Inicializar conexión a la base de datos
+        self.db = ConexionDB()
+        if not self.db.verificar_conexion():
+            messagebox.showerror("Error de Conexión", 
+                               "No se pudo conectar a la base de datos.\n"
+                               "Verifique la configuración en conexion.py")
+            logging.error("Falló la conexión inicial a la base de datos")
+        else:
+            logging.info("Conexión a la base de datos establecida correctamente")
+        
+        # Inicializar mixer para sonidos de alerta
+        try:
+            pygame.mixer.init()
+            logging.info("Pygame mixer inicializado correctamente")
+        except Exception as e:
+            logging.error(f"Error al inicializar pygame: {e}")
+            print(f"Error al inicializar pygame: {e}")
+        
+        # Variables de estado
+        self.ultimo_evento_alertado = None  # Para evitar alertas repetidas
+        self.id_ultimo_evento = None        # ID del último evento en la base de datos
+        self.temperatura_actual = "--"
+        self.alerta_actual = "Sin eventos recientes"
+        
+        # Crear interfaz de usuario
+        self.crear_interfaz()
+        
+        # Cargar datos iniciales y configurar actualizaciones
+        self.cargar_eventos()
+        self.actualizar_info_ciudad()
+        self.actualizar_datos()
+
+    def crear_interfaz(self):
+        # ========== Encabezado ==========
+        encabezado = tk.Label(self.root, text="SISTEMA DE MONITOREO - EVENTOS EN VIVO",
+                             font=("Helvetica", 22, "bold"), bg="#2c3e50", fg="white", pady=15)
+        encabezado.pack(fill=tk.X)
+
+        # ========== Marco de información actual ==========
+        info_frame = tk.Frame(self.root, bg="#ecf0f1", pady=10)
+        info_frame.pack(padx=20, pady=10, fill=tk.X)
+
+        # Panel para mostrar la temperatura actual
+        self.temperatura_label = tk.Label(info_frame, 
+                                        text=f"Temperatura actual: {self.temperatura_actual} °C",
+                                        font=("Arial", 16), fg="#2980b9", bg="#ecf0f1")
+        self.temperatura_label.pack(anchor="w", padx=10, pady=5)
+
+        # Panel para mostrar alertas activas
+        self.alerta_label = tk.Label(info_frame, 
+                                    text=f"Alerta: {self.alerta_actual}",
+                                    font=("Arial", 16, "bold"), fg="#c0392b", bg="#ecf0f1")
+        self.alerta_label.pack(anchor="w", padx=10, pady=5)
+
+        # ========== Título de la tabla ==========
+        titulo_eventos = tk.Label(self.root, text="Eventos recientes del sistema de monitoreo",
+                                 font=("Arial", 18, "bold"), pady=10)
+        titulo_eventos.pack()
+
+        # ========== Filtros ==========
+        filtro_frame = tk.Frame(self.root)
+        filtro_frame.pack(pady=5)
+
+        # Filtros por fecha
+        tk.Label(filtro_frame, text="Año:", font=("Arial", 12)).grid(row=0, column=0, padx=5)
+        self.anio_entry = tk.Entry(filtro_frame, width=6)
+        self.anio_entry.grid(row=0, column=1, padx=5)
+
+        tk.Label(filtro_frame, text="Mes:", font=("Arial", 12)).grid(row=0, column=2, padx=5)
+        self.mes_entry = tk.Entry(filtro_frame, width=4)
+        self.mes_entry.grid(row=0, column=3, padx=5)
+
+        tk.Label(filtro_frame, text="Día:", font=("Arial", 12)).grid(row=0, column=4, padx=5)
+        self.dia_entry = tk.Entry(filtro_frame, width=4)
+        self.dia_entry.grid(row=0, column=5, padx=5)
+
+        # Botones de filtro
+        tk.Button(filtro_frame, text="Buscar", command=self.buscar_eventos,
+                 font=("Arial", 10), bg="#3498db", fg="white").grid(row=0, column=6, padx=10)
+        
+        tk.Button(filtro_frame, text="Refrescar Tabla", command=self.cargar_eventos,
+                 font=("Arial", 10), bg="#2ecc71", fg="white").grid(row=0, column=7, padx=5)
+        
+        # Filtro por tipo de evento
+        tk.Label(filtro_frame, text="Tipo:", font=("Arial", 12)).grid(row=0, column=8, padx=5)
+        self.tipo_combo = ttk.Combobox(filtro_frame, width=15, 
+                                     values=["Todos", "Temperatura", "Alerta Sismica", "Incendio", "Trafico Peatonal"])
+        self.tipo_combo.current(0)  # Seleccionar "Todos" por defecto
+        self.tipo_combo.grid(row=0, column=9, padx=5)
+        self.tipo_combo.bind("<<ComboboxSelected>>", self.filtrar_por_tipo)
+
+        # ========== Tabla ==========
+        tabla_frame = tk.LabelFrame(self.root, text="Eventos Registrados",
+                                   font=("Arial", 12, "bold"), padx=10, pady=10)
+        tabla_frame.pack(fill=tk.BOTH, expand=True, padx=20, pady=10)
+
+        # Crear tabla con scrollbar
+        scroll_y = ttk.Scrollbar(tabla_frame, orient="vertical")
+        scroll_y.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        self.tree = ttk.Treeview(
+            tabla_frame, 
+            columns=("Fecha", "Ubicación", "Tipo", "Descripción"), 
+            show="headings", 
+            yscrollcommand=scroll_y.set
+        )
+        scroll_y.config(command=self.tree.yview)
+        
+        # Configurar columnas
+        self.tree.heading("Fecha", text="Fecha y Hora")
+        self.tree.heading("Ubicación", text="Ubicación")
+        self.tree.heading("Tipo", text="Tipo de Evento")
+        self.tree.heading("Descripción", text="Descripción")
+        
+        # Ajustar ancho de columnas
+        self.tree.column("Fecha", width=160, anchor=tk.CENTER)
+        self.tree.column("Ubicación", width=150, anchor=tk.CENTER)
+        self.tree.column("Tipo", width=150, anchor=tk.CENTER)
+        self.tree.column("Descripción", width=400, anchor=tk.W)
+        
+        self.tree.pack(fill=tk.BOTH, expand=True)
+
+        # ========== Barra de estado ==========
+        self.barra_estado = tk.Label(self.root, text="Listo", bd=1, relief=tk.SUNKEN, anchor=tk.W)
+        self.barra_estado.pack(side=tk.BOTTOM, fill=tk.X)
+
+    def cargar_eventos(self):
+        """Carga los eventos más recientes en la tabla."""
+        # Limpiar tabla
+        for i in self.tree.get_children():
+            self.tree.delete(i)
+
+        try:
+            # Verificar conexión a la base de datos
+            if not self.db.verificar_conexion():
+                self.barra_estado.config(text="Error: No hay conexión a la base de datos. Intentando reconectar...")
+                self.db = ConexionDB()  # Intentar reconexión
+                if not self.db.verificar_conexion():
+                    messagebox.showerror("Error de Conexión", "No se pudo reconectar a la base de datos.")
+                    logging.error("Fallo en reconexión a la base de datos al cargar eventos")
+                    return
+                logging.info("Reconexión a la base de datos exitosa")
+
+            # Obtener eventos y mostrarlos
+            eventos = self.db.obtener_eventos()
+            if not eventos:
+                self.barra_estado.config(text="No se encontraron eventos en la base de datos.")
+                return
+
+            for ev in eventos:
+                # Formatear fecha si es datetime
+                fecha_formateada = ev[0]
+                if isinstance(ev[0], datetime):
+                    fecha_formateada = ev[0].strftime("%Y-%m-%d %H:%M:%S")
+                
+                self.tree.insert("", "end", values=(
+                    fecha_formateada,
+                    ev[1],
+                    ev[2],
+                    ev[3]
+                ))
+            
+            # Actualizar barra de estado
+            self.barra_estado.config(text=f"Se cargaron {len(eventos)} eventos.")
+            logging.info(f"Se cargaron {len(eventos)} eventos exitosamente")
+            
+        except Exception as e:
+            mensaje_error = f"Error al cargar eventos: {e}"
+            self.barra_estado.config(text=mensaje_error[:50] + "...")
+            logging.error(mensaje_error)
+            print(mensaje_error)
+
+    def buscar_eventos(self):
+        """Busca eventos según los filtros de fecha ingresados."""
+        # Obtener valores de los filtros
+        anio = self.anio_entry.get()
+        mes = self.mes_entry.get()
+        dia = self.dia_entry.get()
+
+        # Validar entradas
+        try:
+            anio = int(anio) if anio.strip() else None
+            mes = int(mes) if mes.strip() else None
+            dia = int(dia) if dia.strip() else None
+            
+            if mes and (mes < 1 or mes > 12):
+                raise ValueError("El mes debe estar entre 1 y 12")
+            if dia and (dia < 1 or dia > 31):
+                raise ValueError("El día debe estar entre 1 y 31")
+                
+        except ValueError as e:
+            messagebox.showerror("Error en el filtro", f"Error en los valores de fecha: {e}")
+            logging.error(f"Error en filtro de fecha: {e}")
+            return
+
+        try:
+            # Verificar conexión a la base de datos
+            if not self.db.verificar_conexion():
+                self.barra_estado.config(text="Error: No hay conexión a la base de datos. Intentando reconectar...")
+                self.db = ConexionDB()  # Intentar reconexión
+                if not self.db.verificar_conexion():
+                    messagebox.showerror("Error de Conexión", "No se pudo reconectar a la base de datos.")
+                    logging.error("Fallo en reconexión a la base de datos al buscar eventos")
+                    return
+                logging.info("Reconexión a la base de datos exitosa")
+
+            # Obtener eventos filtrados
+            eventos = self.db.obtener_eventos_filtrados(anio, mes, dia)
+
+            # Limpiar tabla
+            for i in self.tree.get_children():
+                self.tree.delete(i)
+
+            # Verificar si hay resultados
+            if not eventos:
+                messagebox.showinfo("Sin resultados", "No se encontraron eventos con los filtros aplicados.")
+                self.barra_estado.config(text="La búsqueda no produjo resultados.")
+                return
+
+            # Mostrar resultados
+            for ev in eventos:
+                # Formatear fecha si es datetime
+                fecha_formateada = ev[0]
+                if isinstance(ev[0], datetime):
+                    fecha_formateada = ev[0].strftime("%Y-%m-%d %H:%M:%S")
+                    
+                self.tree.insert("", "end", values=(
+                    fecha_formateada,
+                    ev[1],
+                    ev[2],
+                    ev[3]
+                ))
+            
+            # Actualizar barra de estado
+            self.barra_estado.config(text=f"Se encontraron {len(eventos)} eventos con los filtros aplicados.")
+            logging.info(f"Búsqueda exitosa: {len(eventos)} eventos encontrados con filtros: año={anio}, mes={mes}, día={dia}")
+            
+        except Exception as e:
+            mensaje_error = f"Error al buscar eventos: {e}"
+            self.barra_estado.config(text=mensaje_error[:50] + "...")
+            logging.error(mensaje_error)
+            print(mensaje_error)
+
+    def filtrar_por_tipo(self, event=None):
+        """Filtra eventos por tipo seleccionado en el combobox."""
+        tipo_seleccionado = self.tipo_combo.get()
+        
+        try:
+            # Verificar conexión a la base de datos
+            if not self.db.verificar_conexion():
+                self.barra_estado.config(text="Error: No hay conexión a la base de datos. Intentando reconectar...")
+                self.db = ConexionDB()  # Intentar reconexión
+                if not self.db.verificar_conexion():
+                    messagebox.showerror("Error de Conexión", "No se pudo reconectar a la base de datos.")
+                    logging.error("Fallo en reconexión a la base de datos al filtrar por tipo")
+                    return
+                logging.info("Reconexión a la base de datos exitosa")
+            
+            if tipo_seleccionado == "Todos":
+                # Cargar todos los eventos
+                self.cargar_eventos()
+                return
+            
+            # Usar el método de la conexión para obtener eventos por tipo
+            eventos = self.db.obtener_eventos_por_tipo(tipo_seleccionado)
+            
+            # Limpiar tabla
+            for i in self.tree.get_children():
+                self.tree.delete(i)
+            
+            if not eventos:
+                messagebox.showinfo("Sin resultados", f"No hay eventos del tipo '{tipo_seleccionado}'.")
+                self.barra_estado.config(text=f"No se encontraron eventos del tipo '{tipo_seleccionado}'.")
+                return
+            
+            # Mostrar resultados
+            for ev in eventos:
+                # Formatear fecha si es datetime
+                fecha_formateada = ev[0]
+                if isinstance(ev[0], datetime):
+                    fecha_formateada = ev[0].strftime("%Y-%m-%d %H:%M:%S")
+                
+                self.tree.insert("", "end", values=(
+                    fecha_formateada,
+                    ev[1],
+                    ev[2],
+                    ev[3]
+                ))
+            
+            # Actualizar barra de estado
+            self.barra_estado.config(text=f"Se encontraron {len(eventos)} eventos del tipo '{tipo_seleccionado}'.")
+            logging.info(f"Filtro por tipo exitoso: {len(eventos)} eventos del tipo '{tipo_seleccionado}'")
+            
+        except Exception as e:
+            mensaje_error = f"Error al filtrar por tipo: {e}"
+            self.barra_estado.config(text=mensaje_error[:50] + "...")
+            logging.error(mensaje_error)
+            print(mensaje_error)
+
+    def actualizar_info_ciudad(self):
+        """Actualiza la información de temperatura."""
+        try:
+            ultimo_temp = self.db.obtener_ultimo_evento_por_tipo("Temperatura")
+            if ultimo_temp:
+                _, _, _, descripcion = ultimo_temp
+                match = re.search(r'([0-9]+(?:\.[0-9]+)?)', descripcion)
+                if match:
+                    self.temperatura_actual = match.group(1)
+                    self.temperatura_label.config(
+                        text=f"Temperatura actual: {self.temperatura_actual} °C",
+                        fg="#2980b9"
+                    )
+                else:
+                    self.temperatura_actual = "--"
+                    self.temperatura_label.config(
+                        text="Temperatura actual: No disponible",
+                        fg="#7f8c8d"
+                    )
+            else:
+                self.temperatura_actual = "--"
+                self.temperatura_label.config(
+                    text="Temperatura actual: -- °C",
+                    fg="#7f8c8d"
+                )
+        except Exception as e:
+            mensaje_error = f"Error al actualizar información de temperatura: {e}"
+            logging.error(mensaje_error)
+            print(mensaje_error)
+            self.temperatura_actual = "--"
+            self.temperatura_label.config(
+                text="Temperatura actual: Error de conexión",
+                fg="#e74c3c"  # Rojo para indicar error
+            )
+
+    def obtener_id_ultimo_evento(self):
+        """Obtiene el ID del último evento insertado en la base de datos."""
+        try:
+            ultimo_id = self.db.obtener_ultimo_id()
+            return ultimo_id
+        except Exception as e:
+            logging.error(f"Error al obtener último ID: {e}")
+            return None
+
+    def actualizar_alerta(self):
+        """
+        Actualiza la alerta mostrada y verifica si hay nuevas alertas.
+        Solo muestra alertas de eventos que ACABAN de ocurrir (nuevo ID).
+        """
+        try:
+            # Obtener el ID del último evento en la base de datos
+            nuevo_id = self.obtener_id_ultimo_evento()
+            
+            # Si no hay eventos en la BD o no podemos obtener el ID
+            if not nuevo_id:
+                self.alerta_actual = "Sin eventos recientes"
+                self.alerta_label.config(
+                    text="Alerta: Sin eventos recientes",
+                    fg="#2ecc71"  # Verde para estado normal
+                )
+                return
+                
+            # Verificar si es un evento nuevo (comparando con el último ID que procesamos)
+            if nuevo_id != self.id_ultimo_evento:
+                # Actualizar nuestro ID almacenado
+                evento_anterior = self.id_ultimo_evento
+                self.id_ultimo_evento = nuevo_id
+                
+                # Obtener el último evento para saber qué tipo es
+                ultimo_evento = self.db.obtener_evento_por_id(nuevo_id)
+                
+                if not ultimo_evento:
+                    return
+                    
+                fecha_hora, ubicacion, tipo_evento, descripcion = ultimo_evento
+                
+                # Actualizar la etiqueta de alerta con este evento
+                if tipo_evento in ['Alerta Sismica', 'Incendio']:
+                    # Formatear fecha
+                    fecha_formateada = fecha_hora
+                    if isinstance(fecha_hora, datetime):
+                        fecha_formateada = fecha_hora.strftime("%H:%M:%S")
+                    
+                    # Actualizar texto de alerta con hora
+                    self.alerta_actual = f"{tipo_evento} - {descripcion} ({fecha_formateada})"
+                    self.alerta_label.config(
+                        text=f"Alerta: {self.alerta_actual}",
+                        fg="#c0392b"  # Rojo para alertas
+                    )
+                    
+                    # Mostrar alerta emergente SOLO si es un evento nuevo 
+                    # y es un evento crítico (alerta o incendio)
+                    # y no es el evento inicial al arrancar (evento_anterior es None)
+                    if evento_anterior is not None:
+                        print(f"Nuevo evento crítico detectado: {tipo_evento}")
+                        self.alerta_emergencia(tipo_evento, descripcion)
+                
+                # Si es un evento de temperatura pero hay alerta activa, mantener la alerta
+                elif (tipo_evento == 'Temperatura' and
+                      ('Alerta Sismica' in self.alerta_actual or 'Incendio' in self.alerta_actual)):
+                    # Mantener el mensaje de alerta anterior, no actualizamos nada
+                    pass
+                else:
+                    # No es un evento crítico, mostrar estado normal
+                    self.alerta_actual = "Sistema operando normalmente"
+                    self.alerta_label.config(
+                        text=f"Alerta: {self.alerta_actual}",
+                        fg="#2ecc71"  # Verde para estado normal
+                    )
+            
+        except Exception as e:
+            mensaje_error = f"Error al actualizar alertas: {e}"
+            logging.error(mensaje_error)
+            print(mensaje_error)
+            self.alerta_label.config(
+                text="Alerta: Error de conexión",
+                fg="#e74c3c"  # Rojo para indicar error
+            )
+
+    def actualizar_datos(self):
+        """Actualiza los datos del dashboard periódicamente."""
+        try:
+            self.actualizar_info_ciudad()
+            self.actualizar_alerta()
+            
+            # Si hay pocos elementos en la tabla, refrescar datos completos
+            if len(self.tree.get_children()) < 10:
+                self.cargar_eventos()
+                
+        except Exception as e:
+            mensaje_error = f"Error al actualizar datos: {e}"
+            logging.error(mensaje_error)
+            print(mensaje_error)
+            # No mostrar messagebox aquí para no interrumpir al usuario
+            self.barra_estado.config(text=f"Error: {str(e)[:50]}...")
+        
+        # Programar siguiente actualización - aumentado a 2 segundos para reducir carga
+        self.root.after(2000, self.actualizar_datos)
+    
+    def reproducir_sonido(self):
+        """Reproduce un sonido de alerta."""
+        try:
+            # Buscar el archivo de sonido en varias ubicaciones posibles
+            sonido_encontrado = False
+            posibles_rutas = [
+                "alerta.mp3",
+                "recursos/sonido/alerta.mp3",
+                "recursos/alerta.mp3",
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "alerta.mp3"),
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "recursos/sonido/alerta.mp3"),
+                r"C:\Users\braya\Documents\Arquitectura de Computadoras\Programa\recursos\sonido\alerta.mp3"
+            ]
+            
+            for ruta in posibles_rutas:
+                if os.path.exists(ruta):
+                    pygame.mixer.music.load(ruta)
+                    sonido_encontrado = True
+                    logging.info(f"Archivo de sonido encontrado en: {ruta}")
+                    break
+            
+            if not sonido_encontrado:
+                mensaje = "No se encontró el archivo de sonido de alerta."
+                logging.warning(mensaje)
+                print(mensaje)
+                
+                # Intentar usar beep del sistema como alternativa
+                try:
+                    import winsound
+                    winsound.Beep(1000, 1000)  # 1000 Hz durante 1 segundo
+                    logging.info("Se usó beep del sistema como alternativa")
+                except Exception as e:
+                    logging.error(f"No se pudo usar beep del sistema: {e}")
+                return
+            
+            pygame.mixer.music.set_volume(1.0)  # 1.0 = volumen máximo
+            pygame.mixer.music.play()
+            time.sleep(3)  # Reducido a 3 segundos para no bloquear por mucho tiempo
+            pygame.mixer.music.stop()
+            logging.info("Sonido de alerta reproducido correctamente")
+            
+        except Exception as e:
+            mensaje_error = f"Error al reproducir sonido: {e}"
+            logging.error(mensaje_error)
+            print(mensaje_error)
+            
+            # Intentar usar beep del sistema si falla pygame
+            try:
+                import winsound
+                winsound.Beep(1000, 1000)  # 1000 Hz durante 1 segundo
+                logging.info("Se usó beep del sistema como alternativa")
+            except Exception as e2:
+                logging.error(f"No se pudo usar beep del sistema: {e2}")
+    
+    def alerta_emergencia(self, tipo_evento, descripcion):
+        """Muestra un diálogo de alerta y reproduce un sonido en hilos separados."""
+        logging.info(f"Alerta de emergencia: {tipo_evento} - {descripcion}")
+        
+        # Mostrar el mensaje en un hilo aparte para no bloquear
+        def mostrar_dialogo():
+            try:
+                messagebox.showwarning("⚠ ALERTA DE EMERGENCIA", 
+                                     f"Se ha detectado: {tipo_evento}\n\n{descripcion}")
+            except Exception as e:
+                logging.error(f"Error al mostrar diálogo de alerta: {e}")
+
+        # Reproducir sonido en otro hilo
+        def reproducir_en_hilo():
+            try:
+                self.reproducir_sonido()
+            except Exception as e:
+                logging.error(f"Error en hilo de reproducción de sonido: {e}")
+
+        # Iniciar hilos como daemon para que terminen cuando se cierre la aplicación
+        threading.Thread(target=mostrar_dialogo, daemon=True).start()
+        threading.Thread(target=reproducir_en_hilo, daemon=True).start()
+
+    def reconectar_bd(self):
+        """Intenta reconectar a la base de datos."""
+        intentos = 0
+        max_intentos = 3
+        
+        while intentos < max_intentos:
+            try:
+                self.db = ConexionDB()
+                if self.db.verificar_conexion():
+                    self.barra_estado.config(text="Reconexión exitosa a la base de datos.")
+                    logging.info("Reconexión a la base de datos exitosa")
+                    return True
+                time.sleep(2)  # Esperar antes de reintentar
+            except Exception as e:
+                mensaje_error = f"Error al reconectar: {e}"
+                logging.error(mensaje_error)
+                print(mensaje_error)
+            
+            intentos += 1
+        
+        self.barra_estado.config(text="No se pudo reconectar a la base de datos después de varios intentos.")
+        logging.error("Fallaron todos los intentos de reconexión")
+        return False
+
+# Código principal para iniciar la aplicación directamente (para pruebas)
+if __name__ == "__main__":
+    try:
+        root = tk.Tk()
+        app = Dashboard(root)
+        root.mainloop()
+    except Exception as e:
+        logging.critical(f"Error crítico que causó cierre de la aplicación: {e}")
+        print(f"Error crítico: {e}")
+        messagebox.showerror("Error Fatal", f"La aplicación se cerrará debido a un error crítico:\n{e}")
