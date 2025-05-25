@@ -6,6 +6,11 @@ import logging
 import os
 import json
 import time
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
 
 # Configurar logging para registrar errores y eventos importantes
 logging.basicConfig(
@@ -21,6 +26,252 @@ app.config['SECRET_KEY'] = 'clave_secreta_para_dashboard'
 ultimo_id_alertado = None
 temperatura_actual = "--"
 alerta_actual = "Sin eventos recientes"
+
+# Lista de correos electrónicos para alertas críticas
+CORREOS_ALERTAS = [
+    "mgilr@miumg.edu.gt",
+    "bmirandav1@miumg.edu.gt", 
+    "fguerrat@miumt.edu.gt",
+    "bgomezq1@miumg.edu.gt",
+    "msantosl5@miumg.edu.gt"
+]
+
+class AlertEmailSender:
+    def __init__(self):
+        self.email = "umg2876@gmail.com"
+        self.password = "ajxo dwel eqpd rzag"
+        self.smtp_server = "smtp.gmail.com"
+        self.smtp_port = 587
+        self.sistema_nombre = "Sistema de Monitoreo Inteligente"
+        self.empresa = "UMG - Ingeniería en Sistemas"
+
+    def _crear_mensaje_html(self, tipo_alerta, descripcion, fecha_hora, ubicacion, severidad="CRÍTICA"):
+        """Crea un mensaje HTML profesional para las alertas."""
+        
+        # Colores según el tipo de alerta
+        colores = {
+            "Alerta Sismica": {"bg": "#FF6B6B", "icon": "🌍", "color": "#FFFFFF"},
+            "Incendio": {"bg": "#FF4757", "icon": "🔥", "color": "#FFFFFF"},
+            "Temperatura": {"bg": "#FFA502", "icon": "🌡️", "color": "#FFFFFF"},
+            "Normal": {"bg": "#2ED573", "icon": "✅", "color": "#FFFFFF"}
+        }
+        
+        config_color = colores.get(tipo_alerta, colores["Normal"])
+        fecha_formateada = fecha_hora.strftime("%d/%m/%Y a las %H:%M:%S") if isinstance(fecha_hora, datetime.datetime) else str(fecha_hora)
+        
+        html_template = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Alerta del Sistema</title>
+        </head>
+        <body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa;">
+            <div style="max-width: 600px; margin: 0 auto; background-color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                
+                <!-- Header -->
+                <div style="background: linear-gradient(135deg, {config_color['bg']}, #1e3c72); color: white; padding: 30px; text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 10px;">{config_color['icon']}</div>
+                    <h1 style="margin: 0; font-size: 24px; font-weight: 600;">ALERTA {severidad}</h1>
+                    <p style="margin: 5px 0 0 0; font-size: 16px; opacity: 0.9;">{self.sistema_nombre}</p>
+                </div>
+                
+                <!-- Contenido Principal -->
+                <div style="padding: 40px 30px;">
+                    
+                    <!-- Información de la Alerta -->
+                    <div style="background-color: #f8f9fa; border-left: 4px solid {config_color['bg']}; padding: 20px; margin-bottom: 30px; border-radius: 4px;">
+                        <h2 style="color: #2c3e50; margin: 0 0 15px 0; font-size: 20px;">Detalles del Evento</h2>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #34495e;">📋 Tipo de Alerta:</strong>
+                            <span style="background-color: {config_color['bg']}; color: white; padding: 4px 12px; border-radius: 20px; font-size: 14px; margin-left: 10px;">{tipo_alerta}</span>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #34495e;">📝 Descripción:</strong>
+                            <p style="margin: 5px 0 0 0; color: #2c3e50; background-color: white; padding: 10px; border-radius: 4px; border: 1px solid #e9ecef;">{descripcion}</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 15px;">
+                            <strong style="color: #34495e;">📍 Ubicación:</strong>
+                            <span style="color: #2c3e50; margin-left: 10px;">{ubicacion}</span>
+                        </div>
+                        
+                        <div style="margin-bottom: 0;">
+                            <strong style="color: #34495e;">🕒 Fecha y Hora:</strong>
+                            <span style="color: #2c3e50; margin-left: 10px;">{fecha_formateada}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Acciones Recomendadas -->
+                    <div style="background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
+                        <h3 style="color: #856404; margin: 0 0 15px 0; font-size: 18px;">⚠️ Acciones Recomendadas</h3>
+                        <ul style="color: #856404; margin: 0; padding-left: 20px;">
+                            <li style="margin-bottom: 8px;">Verificar el estado del sistema inmediatamente</li>
+                            <li style="margin-bottom: 8px;">Contactar al personal de emergencia si es necesario</li>
+                            <li style="margin-bottom: 8px;">Documentar las acciones tomadas</li>
+                            <li style="margin-bottom: 0;">Monitorear la situación hasta su resolución</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Información del Sistema -->
+                    <div style="background-color: #e3f2fd; border-radius: 8px; padding: 20px; text-align: center;">
+                        <h4 style="color: #1565c0; margin: 0 0 10px 0;">📊 Dashboard de Monitoreo</h4>
+                        <p style="color: #1976d2; margin: 0; font-size: 14px;">Accede al dashboard para más detalles: <a href="http://localhost:5000" style="color: #1565c0; text-decoration: none; font-weight: 600;">Sistema de Monitoreo</a></p>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div style="background-color: #2c3e50; color: #ecf0f1; padding: 25px; text-align: center;">
+                    <p style="margin: 0 0 10px 0; font-size: 16px; font-weight: 600;">{self.empresa}</p>
+                    <p style="margin: 0; font-size: 12px; opacity: 0.8;">
+                        Este es un mensaje automático generado por el {self.sistema_nombre}.<br>
+                        No responder a este correo electrónico.
+                    </p>
+                    <div style="margin-top: 15px; font-size: 11px; opacity: 0.6;">
+                        Generado el {datetime.datetime.now().strftime("%d/%m/%Y a las %H:%M:%S")}
+                    </div>
+                </div>
+            </div>
+        </body>
+        </html>
+        """
+        
+        return html_template
+
+    def _crear_mensaje_texto(self, tipo_alerta, descripcion, fecha_hora, ubicacion):
+        """Crea una versión en texto plano como respaldo."""
+        fecha_formateada = fecha_hora.strftime("%d/%m/%Y a las %H:%M:%S") if isinstance(fecha_hora, datetime.datetime) else str(fecha_hora)
+        
+        return f"""
+🚨 ALERTA CRÍTICA DETECTADA 🚨
+
+{self.sistema_nombre}
+{self.empresa}
+
+═══════════════════════════════════════════
+
+DETALLES DEL EVENTO:
+📋 Tipo: {tipo_alerta}
+📝 Descripción: {descripcion}
+📍 Ubicación: {ubicacion}
+🕒 Fecha/Hora: {fecha_formateada}
+
+═══════════════════════════════════════════
+
+⚠️  ACCIONES INMEDIATAS REQUERIDAS:
+• Verificar el estado del sistema
+• Contactar personal de emergencia si necesario
+• Documentar acciones tomadas
+• Monitorear hasta resolución
+
+═══════════════════════════════════════════
+
+📊 Dashboard: http://localhost:5000
+
+---
+Mensaje automático - No responder
+Generado: {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
+        """
+
+    def enviar_alerta(self, to_email, tipo_alerta, descripcion, fecha_hora, ubicacion):
+        """Envía una alerta individual a un correo específico."""
+        try:
+            msg = MIMEMultipart("alternative")
+            msg["From"] = f"{self.sistema_nombre} <{self.email}>"
+            msg["To"] = to_email
+            msg["Subject"] = f"🚨 {tipo_alerta.upper()} - {self.sistema_nombre}"
+            
+            # Crear versiones texto y HTML
+            texto_plano = self._crear_mensaje_texto(tipo_alerta, descripcion, fecha_hora, ubicacion)
+            mensaje_html = self._crear_mensaje_html(tipo_alerta, descripcion, fecha_hora, ubicacion)
+            
+            # Adjuntar ambas versiones
+            parte_texto = MIMEText(texto_plano, "plain", "utf-8")
+            parte_html = MIMEText(mensaje_html, "html", "utf-8")
+            
+            msg.attach(parte_texto)
+            msg.attach(parte_html)
+            
+            # Enviar correo
+            server = smtplib.SMTP(self.smtp_server, self.smtp_port)
+            server.starttls()
+            server.login(self.email, self.password)
+            server.sendmail(self.email, to_email, msg.as_string())
+            server.quit()
+            
+            logging.info(f"✅ Alerta enviada exitosamente a {to_email}")
+            return True
+            
+        except Exception as e:
+            logging.error(f"❌ Error al enviar alerta a {to_email}: {str(e)}")
+            return False
+
+    def enviar_alerta_critica(self, tipo_alerta, descripcion, fecha_hora, ubicacion):
+        """Envía alertas críticas a todos los correos configurados."""
+        exitosos = 0
+        fallidos = 0
+        
+        logging.info(f"🚨 Enviando alerta crítica: {tipo_alerta}")
+        
+        for email in CORREOS_ALERTAS:
+            if self.enviar_alerta(email, tipo_alerta, descripcion, fecha_hora, ubicacion):
+                exitosos += 1
+            else:
+                fallidos += 1
+        
+        logging.info(f"📊 Resumen de envío: {exitosos} exitosos, {fallidos} fallidos")
+        return exitosos, fallidos
+
+    def enviar_notificacion_estado(self, estado="NORMAL", temperatura=None):
+        """Envía notificaciones de estado del sistema."""
+        tipo_mensaje = "Estado del Sistema"
+        
+        if estado == "NORMAL":
+            descripcion = f"El sistema está operando normalmente. Temperatura actual: {temperatura}°C"
+            icono = "✅"
+        else:
+            descripcion = f"Se ha detectado un cambio en el estado del sistema: {estado}"
+            icono = "⚠️"
+        
+        mensaje_simple = f"""
+{icono} {tipo_mensaje}
+
+{descripcion}
+
+Fecha: {datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")}
+Sistema: {self.sistema_nombre}
+
+---
+Notificación automática del dashboard
+        """
+        
+        try:
+            exitosos = 0
+            for email in CORREOS_ALERTAS:
+                msg = MIMEText(mensaje_simple, "plain", "utf-8")
+                msg["From"] = f"{self.sistema_nombre} <{self.email}>"
+                msg["To"] = email
+                msg["Subject"] = f"{icono} {tipo_mensaje} - {datetime.datetime.now().strftime('%H:%M')}"
+                
+                server = smtplib.SMTP(self.smtp_server, self.smtp_port)
+                server.starttls()
+                server.login(self.email, self.password)
+                server.sendmail(self.email, email, msg.as_string())
+                server.quit()
+                exitosos += 1
+            
+            logging.info(f"✅ Notificación de estado enviada a {exitosos} destinatarios")
+            return exitosos, 0
+            
+        except Exception as e:
+            logging.error(f"❌ Error al enviar notificación de estado: {e}")
+            return 0, 1
+
+# Inicializar AlertEmailSender
+email_sender = AlertEmailSender()
 
 # Inicializar conexión a la base de datos
 db = None
@@ -294,16 +545,29 @@ def verificar_alertas():
                 
                 # Solo mostrar alerta si no es el primer evento al iniciar
                 if id_anterior is not None:
+                    # ENVÍO DE CORREO ELECTRÓNICO PARA ALERTAS CRÍTICAS
+                    try:
+                        exitosos, fallidos = email_sender.enviar_alerta_critica(
+                            tipo_evento, 
+                            descripcion, 
+                            fecha_hora, 
+                            ubicacion
+                        )
+                        logging.info(f"Alerta crítica procesada: {exitosos} correos enviados exitosamente, {fallidos} fallidos")
+                    except Exception as e:
+                        logging.error(f"Error al enviar alertas por correo: {e}")
+                    
                     return jsonify({
                         'hay_alerta': True,
                         'mensaje': alerta_actual,
                         'tipo': tipo_evento,
                         'descripcion': descripcion,
-                        'fecha': str(fecha_formateada)
+                        'fecha': str(fecha_formateada),
+                        'correos_enviados': True  # Indicar que se enviaron correos
                     })
             # Si es un evento de temperatura, resetear la alerta a normal
             elif tipo_evento == 'Temperatura':
-                # Resetear la alerta a normal - Aquí está el cambio
+                # Resetear la alerta a normal
                 alerta_actual = "Sistema operando normalmente"
                 return jsonify({
                     'hay_alerta': False,
@@ -362,6 +626,106 @@ def estado_dashboard():
         logging.error(f"Error al obtener estado del dashboard: {e}")
         return jsonify({'error': str(e)}), 500
 
+@app.route('/configurar_correos', methods=['GET', 'POST'])
+def configurar_correos():
+    """API para ver y actualizar la lista de correos de alerta."""
+    global CORREOS_ALERTAS
+    
+    if request.method == 'GET':
+        return jsonify({
+            'correos': CORREOS_ALERTAS,
+            'total': len(CORREOS_ALERTAS)
+        })
+    
+    elif request.method == 'POST':
+        try:
+            datos = request.get_json()
+            nuevos_correos = datos.get('correos', [])
+            
+            # Validar que sean correos válidos
+            import re
+            patron_email = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            correos_validos = []
+            
+            for correo in nuevos_correos:
+                if re.match(patron_email, correo.strip()):
+                    correos_validos.append(correo.strip())
+            
+            if correos_validos:
+                CORREOS_ALERTAS = correos_validos
+                logging.info(f"Lista de correos actualizada: {len(correos_validos)} correos")
+                return jsonify({
+                    'success': True,
+                    'mensaje': f'Lista actualizada con {len(correos_validos)} correos válidos',
+                    'correos': CORREOS_ALERTAS
+                })
+            else:
+                return jsonify({
+                    'success': False,
+                    'mensaje': 'No se encontraron correos válidos'
+                }), 400
+                
+        except Exception as e:
+            logging.error(f"Error al actualizar correos: {e}")
+            return jsonify({
+                'success': False,
+                'mensaje': f'Error al actualizar: {str(e)}'
+            }), 500
+
+@app.route('/test_email')
+def test_email():
+    """API para probar el envío de correos (solo para desarrollo)."""
+    try:
+        # Prueba de alerta crítica
+        exitosos, fallidos = email_sender.enviar_alerta_critica(
+            "Prueba del Sistema",
+            "Este es un correo de prueba del sistema de alertas - Todas las funciones operando correctamente",
+            datetime.datetime.now(),
+            "Dashboard de Prueba - Laboratorio UMG"
+        )
+        
+        # Prueba de notificación de estado
+        exitosos_estado, fallidos_estado = email_sender.enviar_notificacion_estado("NORMAL", "23.5")
+        
+        return jsonify({
+            'success': True,
+            'mensaje': f'Pruebas completadas - Alertas: {exitosos} exitosos, {fallidos} fallidos | Estado: {exitosos_estado} exitosos',
+            'alertas_criticas': {'exitosos': exitosos, 'fallidos': fallidos},
+            'notificaciones_estado': {'exitosos': exitosos_estado, 'fallidos': fallidos_estado},
+            'total_correos': len(CORREOS_ALERTAS)
+        })
+    except Exception as e:
+        logging.error(f"Error en prueba completa de correos: {e}")
+        return jsonify({
+            'success': False,
+            'mensaje': f'Error en las pruebas: {str(e)}'
+        }), 500
+
+@app.route('/enviar_reporte_estado')
+def enviar_reporte_estado():
+    """API para enviar un reporte del estado actual del sistema."""
+    try:
+        # Obtener temperatura actual
+        temp_response = obtener_temperatura_actual()
+        temp_data = json.loads(temp_response.get_data(as_text=True))
+        temperatura = temp_data.get('temperatura', '--')
+        
+        # Enviar notificación de estado
+        exitosos, fallidos = email_sender.enviar_notificacion_estado("NORMAL", temperatura)
+        
+        return jsonify({
+            'success': True,
+            'mensaje': f'Reporte de estado enviado: {exitosos} exitosos, {fallidos} fallidos',
+            'temperatura_actual': temperatura,
+            'correos_enviados': exitosos
+        })
+    except Exception as e:
+        logging.error(f"Error al enviar reporte de estado: {e}")
+        return jsonify({
+            'success': False,
+            'mensaje': f'Error al enviar reporte: {str(e)}'
+        }), 500
+
 @app.route('/static/sound/<filename>')
 def serve_sound(filename):
     """Sirve archivos de sonido."""
@@ -410,4 +774,7 @@ if __name__ == '__main__':
             logging.error(f"Error al copiar archivo de sonido: {e}")
     
     # Iniciar el servidor web
+    print("🚀 Dashboard iniciado con sistema de alertas por correo electrónico")
+    print(f"📧 Correos configurados para alertas: {len(CORREOS_ALERTAS)}")
+    print("🌐 Acceder a: http://localhost:5000")
     app.run(debug=True, host='0.0.0.0', port=5000)
