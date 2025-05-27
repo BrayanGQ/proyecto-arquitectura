@@ -138,3 +138,35 @@ h1, h2, h3, h4, h5, h6 {
     from { color: #dc3545; }
     to { color: #000000; }
 }
+
+/* Mapa de sensores */
+.tokyo-map {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    min-height: 300px;
+    position: relative;
+    border: 2px dashed #dee2e6;
+    background-image: 
+        radial-gradient(circle at 25% 35%, rgba(255, 107, 107, 0.3) 20px, transparent 20px),
+        radial-gradient(circle at 70% 25%, rgba(78, 205, 196, 0.3) 15px, transparent 15px),
+        radial-gradient(circle at 45% 75%, rgba(69, 183, 209, 0.3) 18px, transparent 18px),
+        radial-gradient(circle at 80% 80%, rgba(150, 206, 180, 0.3) 22px, transparent 22px);
+}
+
+.sensor-location {
+    position: absolute;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    border: 2px solid;
+}
+
+.location-temp { top: 35%; left: 25%; border-color: #FF6B6B; }
+.location-vib { top: 25%; left: 70%; border-color: #4ECDC4; }
+.location-mov { top: 75%; left: 45%; border-color: #45B7D1; }
+.location-train { top: 80%; left: 80%; border-color: #96CEB4; }

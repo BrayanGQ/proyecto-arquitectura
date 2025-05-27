@@ -10,11 +10,11 @@ CONFIG = {
     'baudrate': 9600,
     
     # Configuración de la base de datos
-    'db_host': 'localhost',
+    'db_host': 'proyecto-universidad-instance-1.cla848gew495.us-east-2.rds.amazonaws.com',
     'db_port': '5432',
     'db_name': 'arduino_monitoreo',
     'db_user': 'postgres',
-    'db_password': 'Matematicas1',
+    'db_password': 'Matematicas123890',
     
     # Umbrales para alertas
     'umbral_temperatura_alta': 70.0,

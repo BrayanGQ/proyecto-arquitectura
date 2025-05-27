@@ -31,7 +31,7 @@ alerta_actual = "Sin eventos recientes"
 CORREOS_ALERTAS = [
     "mgilr@miumg.edu.gt",
     "bmirandav1@miumg.edu.gt", 
-    "fguerrat@miumt.edu.gt",
+    "fguerrat@miumg.edu.gt",
     "bgomezq1@miumg.edu.gt",
     "msantosl5@miumg.edu.gt"
 ]

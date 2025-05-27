@@ -4,11 +4,11 @@ from datetime import datetime
 
 class ConexionDB:
     def __init__(self):
-        self.host = 'localhost'
+        self.host = 'proyecto-universidad-instance-1.cla848gew495.us-east-2.rds.amazonaws.com'
         self.port = '5432'
         self.dbname = 'arduino_monitoreo'
         self.user = 'postgres'
-        self.password = 'Matematicas1'
+        self.password = 'Matematicas123890'
         
         # Configurar codificación por defecto para psycopg2
         psycopg2.extensions.register_type(psycopg2.extensions.UNICODE)

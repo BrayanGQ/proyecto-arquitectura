@@ -7,6 +7,18 @@ let ultimoEvento = null;
 let intervaloActualizacion = null;
 let errorConexion = false;
 
+// Variables para gráficos
+let temperatureChart, eventsChart, activityChart;
+let eventCounts = { 
+    'Temperatura': 0, 
+    'Incendio': 0, 
+    'Alerta Sismica': 0, 
+    'Trafico Peatonal': 0, 
+    'Tren Llegada': 0, 
+    'Puerta Abierta': 0, 
+    'Puerta Cerrada': 0 
+};
+
 // Inicialización cuando el documento está listo
 $(document).ready(function() {
     console.log("Inicializando dashboard web...");
@@ -39,6 +51,9 @@ $(document).ready(function() {
         console.warn("No se pudo precargar el sonido:", e);
     }
     
+    // Inicializar gráficos
+    setTimeout(initializeCharts, 1000);
+    
     // Inicializar datos
     cargarEventos();
     actualizarInfoEstado();
@@ -53,6 +68,141 @@ $(document).ready(function() {
         }
     });
 });
+
+// Inicializar gráficos
+function initializeCharts() {
+    console.log("Inicializando gráficos...");
+    
+    // Gráfico de temperatura
+    const tempCtx = document.getElementById('temperatureChart');
+    if (tempCtx) {
+        temperatureChart = new Chart(tempCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Temperatura (°C)',
+                    data: [],
+                    borderColor: '#FF6B6B',
+                    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#FF6B6B',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: '#FF6B6B'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        title: {
+                            display: true,
+                            text: 'Temperatura (°C)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tiempo'
+                        }
+                    }
+                }
+            }
+        });
+        console.log("Gráfico de temperatura inicializado");
+    }
+
+    // Gráfico de eventos por tipo
+    const eventsCtx = document.getElementById('eventsChart');
+    if (eventsCtx) {
+        eventsChart = new Chart(eventsCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Temperatura', 'Tren Llegada', 'Puerta Abierta', 'Puerta Cerrada', 'Tráfico Peatonal', 'Alerta Sísmica', 'Incendio'],
+                datasets: [{
+                    data: [0, 0, 0, 0, 0, 0, 0],
+                    backgroundColor: [
+                        '#FF6B6B',  // Temperatura
+                        '#96CEB4',  // Tren Llegada
+                        '#4ECDC4',  // Puerta Abierta
+                        '#45B7D1',  // Puerta Cerrada
+                        '#FFA726',  // Tráfico Peatonal
+                        '#FF7043',  // Alerta Sísmica
+                        '#EF5350'   // Incendio
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontSize: 10,
+                            boxWidth: 12
+                        }
+                    }
+                }
+            }
+        });
+        console.log("Gráfico de eventos inicializado");
+    }
+
+    // Gráfico de actividad por hora
+    const activityCtx = document.getElementById('activityChart');
+    if (activityCtx) {
+        activityChart = new Chart(activityCtx.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['06:00', '10:00', '14:00', '18:00', '22:00'],
+                datasets: [{
+                    label: 'Eventos por Hora',
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Número de Eventos'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Hora del Día'
+                        }
+                    }
+                }
+            }
+        });
+        console.log("Gráfico de actividad inicializado");
+    }
+}
 
 // Función para cargar todos los eventos
 function cargarEventos() {
@@ -80,6 +230,17 @@ function cargarEventos() {
             if (datos.length === 0) {
                 mostrarMensajeEstado("No se encontraron eventos en la base de datos", "warning");
             } else {
+                // Resetear contadores de eventos
+                eventCounts = { 
+                    'Temperatura': 0, 
+                    'Incendio': 0, 
+                    'Alerta Sismica': 0, 
+                    'Trafico Peatonal': 0, 
+                    'Tren Llegada': 0, 
+                    'Puerta Abierta': 0, 
+                    'Puerta Cerrada': 0 
+                };
+                
                 datos.forEach(function(evento) {
                     const fila = dataTable.row.add([
                         evento.fecha,
@@ -90,7 +251,18 @@ function cargarEventos() {
                     
                     // Aplicar estilo según el tipo de evento
                     $(fila).addClass(obtenerClaseEvento(evento.tipo));
+                    
+                    // Contar eventos por tipo para gráficos
+                    if (eventCounts.hasOwnProperty(evento.tipo)) {
+                        eventCounts[evento.tipo]++;
+                    }
                 });
+                
+                // Actualizar gráfico de eventos
+                updateEventsChart();
+                
+                // Actualizar gráfico de actividad (simulado basado en datos reales)
+                updateActivityChart();
                 
                 mostrarMensajeEstado(`Se cargaron ${datos.length} eventos correctamente`, "success");
             }
@@ -154,6 +326,17 @@ function buscarEventos() {
             if (datos.length === 0) {
                 mostrarMensajeEstado("No se encontraron eventos con los filtros aplicados", "warning");
             } else {
+                // Resetear contadores
+                eventCounts = { 
+                    'Temperatura': 0, 
+                    'Incendio': 0, 
+                    'Alerta Sismica': 0, 
+                    'Trafico Peatonal': 0, 
+                    'Tren Llegada': 0, 
+                    'Puerta Abierta': 0, 
+                    'Puerta Cerrada': 0 
+                };
+                
                 // Agregar datos a la tabla
                 datos.forEach(function(evento) {
                     const fila = dataTable.row.add([
@@ -165,7 +348,16 @@ function buscarEventos() {
                     
                     // Aplicar estilo según el tipo de evento
                     $(fila).addClass(obtenerClaseEvento(evento.tipo));
+                    
+                    // Contar eventos
+                    if (eventCounts.hasOwnProperty(evento.tipo)) {
+                        eventCounts[evento.tipo]++;
+                    }
                 });
+                
+                // Actualizar gráficos
+                updateEventsChart();
+                updateActivityChart();
                 
                 mostrarMensajeEstado(`Se encontraron ${datos.length} eventos con los filtros aplicados`, "success");
             }
@@ -213,6 +405,17 @@ function filtrarPorTipo() {
             if (datos.length === 0) {
                 mostrarMensajeEstado(`No se encontraron eventos del tipo '${tipoSeleccionado}'`, "warning");
             } else {
+                // Resetear contadores
+                eventCounts = { 
+                    'Temperatura': 0, 
+                    'Incendio': 0, 
+                    'Alerta Sismica': 0, 
+                    'Trafico Peatonal': 0, 
+                    'Tren Llegada': 0, 
+                    'Puerta Abierta': 0, 
+                    'Puerta Cerrada': 0 
+                };
+                
                 // Agregar datos a la tabla
                 datos.forEach(function(evento) {
                     const fila = dataTable.row.add([
@@ -224,7 +427,16 @@ function filtrarPorTipo() {
                     
                     // Aplicar estilo según el tipo de evento
                     $(fila).addClass(obtenerClaseEvento(evento.tipo));
+                    
+                    // Contar eventos
+                    if (eventCounts.hasOwnProperty(evento.tipo)) {
+                        eventCounts[evento.tipo]++;
+                    }
                 });
+                
+                // Actualizar gráficos
+                updateEventsChart();
+                updateActivityChart();
                 
                 mostrarMensajeEstado(`Se encontraron ${datos.length} eventos del tipo '${tipoSeleccionado}'`, "success");
             }
@@ -279,9 +491,71 @@ function actualizarTemperatura(temperatura) {
     if (temperatura && temperatura !== '--') {
         tempLabel.html(`<i class="fas fa-thermometer-half me-2"></i> Temperatura actual: ${temperatura} °C`);
         tempLabel.css('color', '#2980b9'); // Azul
+        
+        // Actualizar gráfico de temperatura
+        updateTemperatureChart(parseFloat(temperatura));
     } else {
         tempLabel.html(`<i class="fas fa-thermometer-half me-2"></i> Temperatura actual: -- °C`);
         tempLabel.css('color', '#7f8c8d'); // Gris
+    }
+}
+
+// Actualizar gráfico de temperatura
+function updateTemperatureChart(temperatura) {
+    if (temperatureChart && !isNaN(temperatura)) {
+        const now = new Date().toLocaleTimeString();
+        
+        // Agregar nuevo punto
+        temperatureChart.data.labels.push(now);
+        temperatureChart.data.datasets[0].data.push(temperatura);
+        
+        // Mantener solo los últimos 10 puntos
+        if (temperatureChart.data.labels.length > 10) {
+            temperatureChart.data.labels.shift();
+            temperatureChart.data.datasets[0].data.shift();
+        }
+        
+        temperatureChart.update('none');
+        console.log(`Gráfico de temperatura actualizado: ${temperatura}°C`);
+    }
+}
+
+// Actualizar gráfico de eventos
+function updateEventsChart() {
+    if (eventsChart) {
+        eventsChart.data.datasets[0].data = [
+            eventCounts['Temperatura'],
+            eventCounts['Tren Llegada'], 
+            eventCounts['Puerta Abierta'],
+            eventCounts['Puerta Cerrada'],
+            eventCounts['Trafico Peatonal'],
+            eventCounts['Alerta Sismica'],
+            eventCounts['Incendio']
+        ];
+        eventsChart.update('none');
+        console.log("Gráfico de eventos actualizado:", eventCounts);
+    }
+}
+
+// Actualizar gráfico de actividad
+function updateActivityChart() {
+    if (activityChart) {
+        // Generar datos de actividad basados en los eventos reales
+        const totalEventos = Object.values(eventCounts).reduce((a, b) => a + b, 0);
+        const hourlyData = [];
+        
+        if (totalEventos > 0) {
+            // Distribuir eventos simuladamente en 5 horas
+            for (let i = 0; i < 5; i++) {
+                hourlyData.push(Math.floor(Math.random() * (totalEventos / 2)) + 1);
+            }
+        } else {
+            hourlyData.push(0, 0, 0, 0, 0);
+        }
+        
+        activityChart.data.datasets[0].data = hourlyData;
+        activityChart.update('none');
+        console.log("Gráfico de actividad actualizado:", hourlyData);
     }
 }
 
