@@ -33,7 +33,8 @@ CORREOS_ALERTAS = [
     "bmirandav1@miumg.edu.gt", 
     "fguerrat@miumg.edu.gt",
     "bgomezq1@miumg.edu.gt",
-    "msantosl5@miumg.edu.gt"
+    "msantosl5@miumg.edu.gt",
+    "mjimenezp8@miumg.edu.gt"
 ]
 
 class AlertEmailSender:
